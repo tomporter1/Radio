@@ -1,0 +1,23 @@
+﻿<Window x:Class="RadioGui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RadioGui"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="345" Width="509">
+    <Grid>
+        <Button x:Name="channel1Button" Content="Channel 1" HorizontalAlignment="Left" Height="70" Margin="10,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="0"/>
+        <Button x:Name="channel2Button" Content="Channel 2" HorizontalAlignment="Left" Height="70" Margin="124,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="1"/>
+        <Button x:Name="channel3Button" Content="Channel 3" HorizontalAlignment="Left" Height="70" Margin="239,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="2"/>
+        <Button x:Name="channel4Button" Content="Channel 4" HorizontalAlignment="Left" Height="70" Margin="354,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="3"/>
+        <Label x:Name="channelLabel" Content="Label" HorizontalAlignment="Left" Height="50" Margin="10,15,0,0" VerticalAlignment="Top" Width="295" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"/>
+        <Button x:Name="onOffButton" Content="Power" HorizontalAlignment="Left" Height="50" Margin="310,15,0,0" VerticalAlignment="Top" Width="154" Click="OnOffButton_Click"/>
+        <Button x:Name="muteButton" Content="Mute" HorizontalAlignment="Left" Height="50" Margin="310,75,0,0" VerticalAlignment="Top" Width="154" Click="MuteButton_Click"/>
+        <Button x:Name="volUpButton" Content="Volume up" HorizontalAlignment="Left" Height="49" Margin="239,221,0,0" VerticalAlignment="Top" Width="225" DataContext="1" Click="AdjustVolumeButton_Click"/>
+        <Button x:Name="voldownButton" Content="Volume down" HorizontalAlignment="Left" Height="49" Margin="10,221,0,0" VerticalAlignment="Top" Width="224" DataContext="-1" Click="AdjustVolumeButton_Click"/>
+        <Label x:Name="volumeLabel" Content="Label" HorizontalAlignment="Left" Height="50" Margin="10,75,0,0" VerticalAlignment="Top" Width="295" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"/>
+        <MediaElement x:Name="mediaElement" HorizontalAlignment="Left" Height="90" Margin="1141,434,0,0" VerticalAlignment="Top" Width="140" Volume="0" UnloadedBehavior="Manual" LoadedBehavior="Play"/>
+
+    </Grid>
+</Window>

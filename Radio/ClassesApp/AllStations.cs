@@ -1,0 +1,45 @@
+﻿using System.Collections.Generic;
+
+namespace ClassesApp
+{
+    public class AllStations
+    {
+        public List<Station> stations;
+
+        public AllStations()
+        {
+            stations = new List<Station>()
+            {
+            new Station("R1","Radio 1", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p"),
+            new Station("R2","Radio 2", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio2_mf_p"),
+            new Station("RMan","Radio Manchester", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_lrmanc_mf_p?s=1591193950&e=1591208350&h=75b3dec246d371cd71071925f9f4735a"),
+            new Station("RX","Radio X", "http://media-ice.musicradio.com:80/RadioXUKMP3")
+            };
+        }
+
+        public bool GetStationWithID(string ID, out Station radioStation)
+        {
+            radioStation = new Station();
+            foreach (Station station in stations)
+            {
+                if(station.ID == ID)
+                {
+                    radioStation = station;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool GetStationWithID(int ID, out Station radioStation)
+        {
+            radioStation = new Station();
+            if(ID < stations.Count && ID >= 0)
+            {
+                radioStation = stations[ID];
+                return true;
+            }
+            return false;           
+        }
+    }
+}
