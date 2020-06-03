@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using ClassesApp;
+using RadioClasses;
 namespace ClassesTests
 {
     public class RadioOnTests

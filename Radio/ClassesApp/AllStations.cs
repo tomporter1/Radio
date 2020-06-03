@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 
-namespace ClassesApp
+namespace RadioClasses
 {
     public class AllStations
     {
         //ToDo make it get the stations from a json file
 
 
-        public List<Station> stations;
+        public List<IStreamable> stations;
 
         public AllStations()
         {
-            stations = new List<Station>()
+            stations = new List<IStreamable>()
             {
             new Station("R1","Radio 1", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p"),
             new Station("R2","Radio 2", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio2_mf_p"),
@@ -26,7 +26,7 @@ namespace ClassesApp
         /// <param name="ID"></param>
         /// <param name="radioStation"></param>
         /// <returns></returns>
-        public bool GetStationWithID(string ID, out Station radioStation)
+        public bool GetStationWithID(string ID, out IStreamable radioStation)
         {
             radioStation = new Station();
             foreach (Station station in stations)
@@ -46,7 +46,7 @@ namespace ClassesApp
         /// <param name="ID"></param>
         /// <param name="radioStation"></param>
         /// <returns></returns>
-        public bool GetStationWithID(int ID, out Station radioStation)
+        public bool GetStationWithID(int ID, out IStreamable radioStation)
         {
             radioStation = new Station();
             if (ID < stations.Count && ID >= 0)

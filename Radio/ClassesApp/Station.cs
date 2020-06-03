@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ClassesApp
+namespace RadioClasses
 {
-    public class Station : IEquatable<Station>
+    public class Station : IStreamable, IEquatable<Station>
     {
         ///////////////////////Properties///////////////////////
-        public string Name { get; private set; }
-        public System.Uri URL { get; private set; }
-        public string ID { get; private set; }
+        public string Name { get; set; }
+        public Uri URL { get; set; }
+        public string ID { get; set; }
 
         ///////////////////////Methods///////////////////////
 

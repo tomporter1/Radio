@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Linq;
 
-namespace ClassesApp
+namespace RadioClasses
 {
     public class Radio
     {
         ///////////////////////Fields///////////////////////
         private int _channel, _volume;
         private bool _on, _isMuted;
-        private AllStations _allStations = new AllStations();
+        private readonly AllStations _allStations = new AllStations();
 
         ///////////////////////Properties///////////////////////
         public int Channel
@@ -43,9 +43,9 @@ namespace ClassesApp
             return "Radio is off";
         }
 
-        public Station PlayStation(int id)
+        public IStreamable PlayStation(int id)
         {
-            if (_allStations.GetStationWithID(id, out Station radioStation))
+            if (_allStations.GetStationWithID(id, out IStreamable radioStation))
                 return radioStation;
             return new Station();
         }
