@@ -5,9 +5,12 @@ namespace ClassesApp
 {
     public class Station : IEquatable<Station>
     {
+        ///////////////////////Properties///////////////////////
         public string Name { get; private set; }
         public System.Uri URL { get; private set; }
         public string ID { get; private set; }
+
+        ///////////////////////Methods///////////////////////
 
         public Station(string id, string name, string url)
         {

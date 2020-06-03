@@ -5,17 +5,19 @@ using System.Windows.Controls;
 
 namespace RadioGui
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        ///////////////////////Fields///////////////////////
         private Radio _radio = new Radio();
         private int _currentChannelID = 0;
+
+        ///////////////////////Methods///////////////////////
 
         public MainWindow()
         {
             InitializeComponent();
+
+            //UI initialization 
             ChangePlayerVolume();
             UpdateVolLabel();
             UpdateChanelLabel();
@@ -35,16 +37,14 @@ namespace RadioGui
             UpdateChanelLabel();
         }
 
-        private void OnOffButton_Click(object sender, RoutedEventArgs e)
+        private void PowerButton_Click(object sender, RoutedEventArgs e)
         {
             _radio.ToggelPower();
             UpdateChanelLabel();
             UpdateVolLabel();
 
             if (_radio.IsOn)
-            {
                 ChangePlayingStation(_radio.PlayStation(_currentChannelID).URL);
-            }
         }
 
         private void MuteButton_Click(object sender, RoutedEventArgs e)
@@ -87,15 +87,8 @@ namespace RadioGui
                 volumeLabel.Content = _radio.IsMuted ? $"Muted" : $"Volume: {_radio.Volume}";
         }
 
-
         private void UpdateChanelLabel() => channelLabel.Content = _radio.IsOn ? $"Channel: {_radio.PlayStation(_currentChannelID).Name}" : "Powered off";
 
-        private void UpdateMuteButton()
-        {
-            if (!_radio.IsOn)
-                muteButton.Content = "Mute";
-            else
-                muteButton.Content = _radio.IsMuted ? "Unmute" : "Mute";
-        }
+        private void UpdateMuteButton() => muteButton.Content = _radio.IsOn && _radio.IsMuted ? "Unmute" : "Mute";
     }
 }

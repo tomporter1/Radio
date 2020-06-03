@@ -5,10 +5,12 @@ namespace ClassesApp
 {
     public class Radio
     {
+        ///////////////////////Fields///////////////////////
         private int _channel, _volume;
         private bool _on, _isMuted;
         private AllStations _allStations = new AllStations();
 
+        ///////////////////////Properties///////////////////////
         public int Channel
         {
             get => _channel;
@@ -21,6 +23,8 @@ namespace ClassesApp
         }
         public bool IsMuted { get => _isMuted; set => _isMuted = value; }
         public bool IsOn { get => _on; set => _on = value; }
+
+        ///////////////////////Methods///////////////////////
 
         public Radio()
         {
@@ -41,18 +45,13 @@ namespace ClassesApp
 
         public Station PlayStation(int id)
         {
-            if(_allStations.GetStationWithID(id, out Station radioStation))
+            if (_allStations.GetStationWithID(id, out Station radioStation))
                 return radioStation;
             return new Station();
         }
 
-        public void ToggelPower()
-        {
-            _on = !_on;
-            if (_on)
-                Play();
-        }
+        public void ToggelPower() => _on = !_on;
 
-        public void ToggleMute() => _isMuted = !_isMuted;      
+        public void ToggleMute() => _isMuted = !_isMuted;
     }
 }

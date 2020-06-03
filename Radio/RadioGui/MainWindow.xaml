@@ -12,7 +12,7 @@
         <Button x:Name="channel3Button" Content="Channel 3" HorizontalAlignment="Left" Height="70" Margin="239,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="2"/>
         <Button x:Name="channel4Button" Content="Channel 4" HorizontalAlignment="Left" Height="70" Margin="354,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="3"/>
         <Label x:Name="channelLabel" Content="Label" HorizontalAlignment="Left" Height="50" Margin="10,15,0,0" VerticalAlignment="Top" Width="295" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"/>
-        <Button x:Name="onOffButton" Content="Power" HorizontalAlignment="Left" Height="50" Margin="310,15,0,0" VerticalAlignment="Top" Width="154" Click="OnOffButton_Click"/>
+        <Button x:Name="powerButton" Content="Power" HorizontalAlignment="Left" Height="50" Margin="310,15,0,0" VerticalAlignment="Top" Width="154" Click="PowerButton_Click"/>
         <Button x:Name="muteButton" Content="Mute" HorizontalAlignment="Left" Height="50" Margin="310,75,0,0" VerticalAlignment="Top" Width="154" Click="MuteButton_Click"/>
         <Button x:Name="volUpButton" Content="Volume up" HorizontalAlignment="Left" Height="49" Margin="239,221,0,0" VerticalAlignment="Top" Width="225" DataContext="1" Click="AdjustVolumeButton_Click"/>
         <Button x:Name="voldownButton" Content="Volume down" HorizontalAlignment="Left" Height="49" Margin="10,221,0,0" VerticalAlignment="Top" Width="224" DataContext="-1" Click="AdjustVolumeButton_Click"/>

@@ -4,6 +4,9 @@ namespace ClassesApp
 {
     public class AllStations
     {
+        //ToDo make it get the stations from a json file
+
+
         public List<Station> stations;
 
         public AllStations()
@@ -17,12 +20,18 @@ namespace ClassesApp
             };
         }
 
+        /// <summary>
+        /// Returns true if there is a radio station with the string ID. 
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="radioStation"></param>
+        /// <returns></returns>
         public bool GetStationWithID(string ID, out Station radioStation)
         {
             radioStation = new Station();
             foreach (Station station in stations)
             {
-                if(station.ID == ID)
+                if (station.ID == ID)
                 {
                     radioStation = station;
                     return true;
@@ -31,15 +40,21 @@ namespace ClassesApp
             return false;
         }
 
+        /// <summary>
+        /// Returns true if there is a radio station with the int ID. In this case the ID is the position in the list
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="radioStation"></param>
+        /// <returns></returns>
         public bool GetStationWithID(int ID, out Station radioStation)
         {
             radioStation = new Station();
-            if(ID < stations.Count && ID >= 0)
+            if (ID < stations.Count && ID >= 0)
             {
                 radioStation = stations[ID];
                 return true;
             }
-            return false;           
+            return false;
         }
     }
 }
