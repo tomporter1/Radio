@@ -3,11 +3,13 @@ using System.Collections.Generic;
 
 namespace RadioClasses
 {
-    public class Station : IStreamable, IEquatable<Station>
+    public class Station : IEquatable<Station>
     {
+        private string _url;
+
         ///////////////////////Properties///////////////////////
         public string Name { get; set; }
-        public Uri URL { get; set; }
+        public Uri URL { get => new Uri(_url); set => _url = value.ToString(); }
         public string ID { get; set; }
 
         ///////////////////////Methods///////////////////////
@@ -15,14 +17,14 @@ namespace RadioClasses
         public Station(string id, string name, string url)
         {
             Name = name;
-            URL = new Uri(url);
+            _url = url;
             ID = id;
         }
 
         public Station()
         {
             Name = "";
-            URL = null;
+            _url = "about:blank";
             ID = "";
         }
 
@@ -34,14 +36,14 @@ namespace RadioClasses
         public bool Equals(Station other)
         {
             return other != null &&
+                   _url == other._url &&
                    Name == other.Name &&
-                   EqualityComparer<Uri>.Default.Equals(URL, other.URL) &&
                    ID == other.ID;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Name, URL, ID);
+            return HashCode.Combine(_url, Name, ID);
         }
 
         public static bool operator ==(Station left, Station right)

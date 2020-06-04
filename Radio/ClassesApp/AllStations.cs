@@ -1,23 +1,41 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using Org.BouncyCastle.Asn1.Crmf;
+using System.Collections.Generic;
+using System.IO;
 
 namespace RadioClasses
 {
     public class AllStations
     {
-        //ToDo make it get the stations from a json file
-
-
-        public List<IStreamable> stations;
+        string jsonPath = @"E:/Documents/Visual Studio Projects/Radio/Radio/ClassesApp/Resources/RadioStations.json";
+        public List<Station> stations;
 
         public AllStations()
         {
-            stations = new List<IStreamable>()
+            RadioStations stationsInfo = JsonConvert.DeserializeObject<RadioStations>(File.ReadAllText(
+                jsonPath));
+
+            stations = new List<Station>();
+
+            foreach (StationInfo info in stationsInfo.stations)
             {
-            new Station("R1", "Radio 1", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p"),
-            new Station("R2", "Radio 2", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio2_mf_p"),
-            new Station("RMan", "Radio Manchester", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_lrmanc_mf_p?s=1591193950&e=1591208350&h=75b3dec246d371cd71071925f9f4735a"),
-            new Station("RX", "Radio X", "http://media-ice.musicradio.com:80/RadioXUKMP3")
+                stations.Add(new Station(info.Key, info.Name, info.Url));
+            }
+        }
+
+        public void SerializeData()
+        {
+            RadioStations radioStations = new RadioStations
+            {
+                stations = new List<StationInfo>()
             };
+
+            foreach (Station station in stations)
+            {
+                radioStations.stations.Add(new StationInfo(station.ID, station.URL.ToString(), station.Name));
+            }
+            string JsonFile = JsonConvert.SerializeObject(radioStations, Formatting.Indented);
+            File.WriteAllText(jsonPath, JsonFile);
         }
 
         /// <summary>
@@ -26,7 +44,7 @@ namespace RadioClasses
         /// <param name="ID"></param>
         /// <param name="radioStation"></param>
         /// <returns></returns>
-        public bool GetStationWithID(string ID, out IStreamable radioStation)
+        public bool GetStationWithID(string ID, out Station radioStation)
         {
             radioStation = new Station();
             foreach (Station station in stations)
@@ -46,7 +64,7 @@ namespace RadioClasses
         /// <param name="ID"></param>
         /// <param name="radioStation"></param>
         /// <returns></returns>
-        public bool GetStationWithID(int ID, out IStreamable radioStation)
+        public bool GetStationWithID(int ID, out Station radioStation)
         {
             radioStation = new Station();
             if (ID < stations.Count && ID >= 0)

@@ -9,7 +9,7 @@ namespace ClassesTests
         public void GetStationWithValidStringID()
         {
             AllStations allStations = new AllStations();
-            bool result = allStations.GetStationWithID("R1", out IStreamable foundStation);
+            bool result = allStations.GetStationWithID("R1", out Station foundStation);
             Assert.IsTrue(result);
             Assert.AreEqual("Radio 1", foundStation.Name);
         }
@@ -18,7 +18,7 @@ namespace ClassesTests
         public void GetStationWithInvalidStringID()
         {
             AllStations allStations = new AllStations();
-            bool result = allStations.GetStationWithID("", out IStreamable foundStation);
+            bool result = allStations.GetStationWithID("", out Station foundStation);
             Assert.IsFalse(result);
             Assert.AreEqual(new Station(), foundStation);
         }
@@ -27,7 +27,7 @@ namespace ClassesTests
         public void GetStationWithValidIntID()
         {
             AllStations allStations = new AllStations();
-            bool result = allStations.GetStationWithID(0, out IStreamable foundStation);
+            bool result = allStations.GetStationWithID(0, out Station foundStation);
             Assert.IsTrue(result);
             Assert.AreEqual("Radio 1", foundStation.Name);
         }
@@ -37,7 +37,7 @@ namespace ClassesTests
         public void GetStationWithInvalidIntID(int id)
         {
             AllStations allStations = new AllStations();
-            bool result = allStations.GetStationWithID(id, out IStreamable foundStation);
+            bool result = allStations.GetStationWithID(id, out Station foundStation);
             Assert.IsFalse(result);
             Assert.AreEqual(new Station(), foundStation);
         }
@@ -46,7 +46,7 @@ namespace ClassesTests
         public void GetStationWithValidIntIDFromRadio()
         {
             Radio radio = new Radio();
-            IStreamable result = radio.PlayStation(0);
+            Station result = radio.GetStation(0);
             Assert.AreEqual("Radio 1", result.Name);
         }
 
@@ -55,7 +55,7 @@ namespace ClassesTests
         public void GetStationWithInvalidIntIDFromRadio(int id)
         {
             Radio radio = new Radio();
-            IStreamable result = radio.PlayStation(id);
+            Station result = radio.GetStation(id);
             Assert.AreEqual(new Station(), result);
         }
     }

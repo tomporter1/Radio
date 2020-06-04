@@ -8,7 +8,7 @@ namespace RadioClasses
         ///////////////////////Fields///////////////////////
         private int _channel, _volume;
         private bool _on, _isMuted;
-        private readonly AllStations _allStations = new AllStations();
+        private AllStations _allStations = new AllStations();
 
         ///////////////////////Properties///////////////////////
         public int Channel
@@ -43,11 +43,17 @@ namespace RadioClasses
             return "Radio is off";
         }
 
-        public IStreamable PlayStation(int id)
+        public Station GetStation(int id)
         {
-            if (_allStations.GetStationWithID(id, out IStreamable radioStation))
+            if (_allStations.GetStationWithID(id, out Station radioStation))
                 return radioStation;
             return new Station();
+        }
+
+        public void UpdateChannelData(Station newStation, int id)
+        {
+            _allStations.stations[id] = newStation;
+            _allStations.SerializeData();
         }
 
         public void ToggelPower() => _on = !_on;

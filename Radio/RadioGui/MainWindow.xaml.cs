@@ -22,10 +22,10 @@ namespace RadioGui
             UpdateVolLabel();
             UpdateChanelLabel();
 
-            channel1Button.Content = _radio.PlayStation(0).Name;
-            channel2Button.Content = _radio.PlayStation(1).Name;
-            channel3Button.Content = _radio.PlayStation(2).Name;
-            channel4Button.Content = _radio.PlayStation(3).Name;
+            channel1Button.Content = _radio.GetStation(0).Name;
+            channel2Button.Content = _radio.GetStation(1).Name;
+            channel3Button.Content = _radio.GetStation(2).Name;
+            channel4Button.Content = _radio.GetStation(3).Name;
         }
 
         private void ChannelButton_Click(object sender, RoutedEventArgs e)
@@ -35,7 +35,7 @@ namespace RadioGui
             _radio.Channel = _currentChannelID;
             if (_radio.IsOn)
             {
-                ChangePlayingStation(_radio.PlayStation(_currentChannelID).URL);
+                ChangePlayingStation(_radio.GetStation(_currentChannelID).URL);
                 UpdateChanelLabel();
             }
         }
@@ -47,9 +47,18 @@ namespace RadioGui
             UpdateVolLabel();
 
             if (_radio.IsOn)
-                ChangePlayingStation(_radio.PlayStation(_currentChannelID).URL);
+                ChangePlayingStation(_radio.GetStation(_currentChannelID).URL);
             else
                 StopPlaying();
+        }
+
+        internal void ReloadStations()
+        {
+            if (_radio.IsOn)
+            {
+                ChangePlayingStation(_radio.GetStation(_currentChannelID).URL);
+                UpdateChanelLabel();
+            }
         }
 
         private void MuteButton_Click(object sender, RoutedEventArgs e)
@@ -97,7 +106,37 @@ namespace RadioGui
                 volumeLabel.Content = _radio.IsMuted ? $"Muted" : $"Volume: {_radio.Volume}";
         }
 
-        private void UpdateChanelLabel() => channelLabel.Content = _radio.IsOn ? $"Channel: {_radio.PlayStation(_currentChannelID).Name}" : "Powered off";
+        public void ShowQuickConnect_Click(object sender, RoutedEventArgs e)
+        {
+            if (!_radio.IsOn)
+            {
+                _radio.ToggelPower();
+                UpdateVolLabel();
+            }
+            QuickPlayWindow quickPlayWindow = new QuickPlayWindow(this);
+            quickPlayWindow.Show();
+        }
+
+        public void ShowManageStations_Click(object sender, RoutedEventArgs e)
+        {
+            ManageStationsWindow manageStationsWindow = new ManageStationsWindow(this, _radio);
+            manageStationsWindow.Show();
+        }
+
+        public void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        public void PlayStation(Station station)
+        {
+            ChangePlayingStation(station.URL);
+            UpdateChanelLabel(station.Name);
+        }
+
+        private void UpdateChanelLabel() => channelLabel.Content = _radio.IsOn ? $"Channel: {_radio.GetStation(_currentChannelID).Name}" : "Powered off";
+
+        private void UpdateChanelLabel(string name) => channelLabel.Content = _radio.IsOn ? $"Channel: {name}" : "Powered off";
 
         private void UpdateMuteButton() => muteButton.Content = _radio.IsOn && _radio.IsMuted ? "Unmute" : "Mute";
     }

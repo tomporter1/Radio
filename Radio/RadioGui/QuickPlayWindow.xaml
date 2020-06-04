@@ -1,0 +1,17 @@
+﻿<Window x:Class="RadioGui.QuickPlayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RadioGui"
+        mc:Ignorable="d"
+        Title="QuickPlayWindow" Height="194" Width="404">
+    <Grid>
+        <Label x:Name="nameLabel" Content="Station Name" HorizontalAlignment="Left" Height="36" Margin="32,18,0,0" VerticalAlignment="Top" Width="95" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Label x:Name="urlLabel" Content="Station Stream URL" HorizontalAlignment="Left" Height="36" Margin="11,59,0,0" VerticalAlignment="Top" Width="116" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="36" Margin="144,18,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" FontSize="20" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="urlTextBox" HorizontalAlignment="Left" Height="36" Margin="144,59,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" FontSize="20" VerticalContentAlignment="Center"/>
+        <Button x:Name="quickPlayButton" Content="Play" HorizontalAlignment="Left" Height="37" Margin="11,109,0,0" VerticalAlignment="Top" Width="365" Click="quickPlayButton_Click"/>
+
+    </Grid>
+</Window>

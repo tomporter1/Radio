@@ -1,0 +1,24 @@
+{
+  "stations": [
+    {
+      "Key": "R1",
+      "Name": "Radio 1",
+      "Url": "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p"
+    },
+    {
+      "Key": "R2",
+      "Name": "Radio 2",
+      "Url": "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio2_mf_p"
+    },
+    {
+      "Key": "RMan",
+      "Name": "Radio Manchester",
+      "Url": "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_lrmanc_mf_p?s=1591193950&e=1591208350&h=75b3dec246d371cd71071925f9f4735a"
+    },
+    {
+      "Key": "RX",
+      "Name": "Radio X",
+      "Url": "http://media-ice.musicradio.com/RadioXUKMP3"
+    }
+  ]
+}
