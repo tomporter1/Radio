@@ -33,8 +33,11 @@ namespace RadioGui
             Button button = (Button)sender;
             _currentChannelID = int.Parse((string)button.DataContext);
             _radio.Channel = _currentChannelID;
-            ChangePlayingStation(_radio.PlayStation(_currentChannelID).URL);
-            UpdateChanelLabel();
+            if (_radio.IsOn)
+            {
+                ChangePlayingStation(_radio.PlayStation(_currentChannelID).URL);
+                UpdateChanelLabel();
+            }
         }
 
         private void PowerButton_Click(object sender, RoutedEventArgs e)
@@ -45,6 +48,8 @@ namespace RadioGui
 
             if (_radio.IsOn)
                 ChangePlayingStation(_radio.PlayStation(_currentChannelID).URL);
+            else
+                StopPlaying();
         }
 
         private void MuteButton_Click(object sender, RoutedEventArgs e)
@@ -74,9 +79,14 @@ namespace RadioGui
 
         private void ChangePlayingStation(Uri url)
         {
-            mediaElement.Stop();
+            StopPlaying();
             mediaElement.Source = url;
             mediaElement.Play();
+        }
+
+        private void StopPlaying()
+        {
+            mediaElement.Stop();
         }
 
         private void UpdateVolLabel()

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RadioGui"
         mc:Ignorable="d"
-        Title="MainWindow" Height="345" Width="509">
+        Title="MainWindow" Height="317" Width="487">
     <Grid>
         <Button x:Name="channel1Button" Content="Channel 1" HorizontalAlignment="Left" Height="70" Margin="10,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="0"/>
         <Button x:Name="channel2Button" Content="Channel 2" HorizontalAlignment="Left" Height="70" Margin="124,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="1"/>

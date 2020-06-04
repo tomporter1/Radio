@@ -13,10 +13,10 @@ namespace RadioClasses
         {
             stations = new List<IStreamable>()
             {
-            new Station("R1","Radio 1", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p"),
-            new Station("R2","Radio 2", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio2_mf_p"),
-            new Station("RMan","Radio Manchester", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_lrmanc_mf_p?s=1591193950&e=1591208350&h=75b3dec246d371cd71071925f9f4735a"),
-            new Station("RX","Radio X", "http://media-ice.musicradio.com:80/RadioXUKMP3")
+            new Station("R1", "Radio 1", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p"),
+            new Station("R2", "Radio 2", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio2_mf_p"),
+            new Station("RMan", "Radio Manchester", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_lrmanc_mf_p?s=1591193950&e=1591208350&h=75b3dec246d371cd71071925f9f4735a"),
+            new Station("RX", "Radio X", "http://media-ice.musicradio.com:80/RadioXUKMP3")
             };
         }
 
