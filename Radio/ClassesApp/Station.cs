@@ -15,7 +15,7 @@ namespace RadioClasses
         public Station(string id, string name, string url)
         {
             Name = name;
-            URL = new System.Uri(url);
+            URL = new Uri(url);
             ID = id;
         }
 
