@@ -21,6 +21,13 @@ namespace RadioClasses
             ID = id;
         }
 
+        public Station(string id, string name, Uri url)
+        {
+            Name = name;
+            _url = url.ToString();
+            ID = id;
+        }
+
         public Station()
         {
             Name = "";
@@ -36,14 +43,14 @@ namespace RadioClasses
         public bool Equals(Station other)
         {
             return other != null &&
-                   _url == other._url &&
                    Name == other.Name &&
+                   EqualityComparer<Uri>.Default.Equals(URL, other.URL) &&
                    ID == other.ID;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(_url, Name, ID);
+            return HashCode.Combine(Name, URL, ID);
         }
 
         public static bool operator ==(Station left, Station right)

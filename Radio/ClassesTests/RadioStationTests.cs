@@ -1,15 +1,23 @@
 ﻿using RadioClasses;
 using NUnit.Framework;
+using System;
 
 namespace ClassesTests
 {
     public class RadioStationTests
     {
+        private AllStations _allStations;
+
+        [SetUp]
+        public void Setup()
+        {
+            _allStations = new AllStations();
+        }
+
         [Test]
         public void GetStationWithValidStringID()
         {
-            AllStations allStations = new AllStations();
-            bool result = allStations.GetStationWithID("R1", out Station foundStation);
+            bool result = _allStations.GetStationWithID("R1", out Station foundStation);
             Assert.IsTrue(result);
             Assert.AreEqual("Radio 1", foundStation.Name);
         }
@@ -26,8 +34,7 @@ namespace ClassesTests
         [Test]
         public void GetStationWithValidIntID()
         {
-            AllStations allStations = new AllStations();
-            bool result = allStations.GetStationWithID(0, out Station foundStation);
+            bool result = _allStations.GetStationWithID(0, out Station foundStation);
             Assert.IsTrue(result);
             Assert.AreEqual("Radio 1", foundStation.Name);
         }
@@ -36,8 +43,7 @@ namespace ClassesTests
         [TestCase(4)]
         public void GetStationWithInvalidIntID(int id)
         {
-            AllStations allStations = new AllStations();
-            bool result = allStations.GetStationWithID(id, out Station foundStation);
+            bool result = _allStations.GetStationWithID(id, out Station foundStation);
             Assert.IsFalse(result);
             Assert.AreEqual(new Station(), foundStation);
         }
@@ -57,6 +63,15 @@ namespace ClassesTests
             Radio radio = new Radio();
             Station result = radio.GetStation(id);
             Assert.AreEqual(new Station(), result);
+        }
+
+        [Test]
+        public void UpdateChannelDataTest()
+        {
+            Station newStation = new Station("R1.1", "Radio 1.1", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1.1_mf_p");
+            _allStations.UpdateStationEntry(newStation,0);
+
+            Assert.AreEqual(newStation, _allStations.AllStationsInfo.Stations[0]);
         }
     }
 }

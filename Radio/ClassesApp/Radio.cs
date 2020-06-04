@@ -31,7 +31,7 @@ namespace RadioClasses
             _channel = 0;
             _on = false;
             _isMuted = false;
-            _volume = 5;
+            _volume = 5;           
         }
 
         public string Play()
@@ -52,7 +52,7 @@ namespace RadioClasses
 
         public void UpdateChannelData(Station newStation, int id)
         {
-            _allStations.stations[id] = newStation;
+            _allStations.UpdateStationEntry(newStation, id);
             _allStations.SerializeData();
         }
 

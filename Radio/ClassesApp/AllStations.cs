@@ -1,41 +1,32 @@
 ﻿using Newtonsoft.Json;
-using Org.BouncyCastle.Asn1.Crmf;
 using System.Collections.Generic;
 using System.IO;
 
 namespace RadioClasses
 {
+    public class RadioStations { public List<Station> Stations { get; set; } }
+
     public class AllStations
     {
         string jsonPath = @"E:/Documents/Visual Studio Projects/Radio/Radio/ClassesApp/Resources/RadioStations.json";
-        public List<Station> stations;
+
+        public RadioStations AllStationsInfo { get; private set; }
 
         public AllStations()
         {
-            RadioStations stationsInfo = JsonConvert.DeserializeObject<RadioStations>(File.ReadAllText(
+            AllStationsInfo = JsonConvert.DeserializeObject<RadioStations>(File.ReadAllText(
                 jsonPath));
-
-            stations = new List<Station>();
-
-            foreach (StationInfo info in stationsInfo.stations)
-            {
-                stations.Add(new Station(info.Key, info.Name, info.Url));
-            }
         }
 
         public void SerializeData()
         {
-            RadioStations radioStations = new RadioStations
-            {
-                stations = new List<StationInfo>()
-            };
-
-            foreach (Station station in stations)
-            {
-                radioStations.stations.Add(new StationInfo(station.ID, station.URL.ToString(), station.Name));
-            }
-            string JsonFile = JsonConvert.SerializeObject(radioStations, Formatting.Indented);
+            string JsonFile = JsonConvert.SerializeObject(AllStationsInfo, Formatting.Indented);
             File.WriteAllText(jsonPath, JsonFile);
+        }
+
+        public void UpdateStationEntry(Station newStation, int index)
+        {
+            AllStationsInfo.Stations[index] = newStation;
         }
 
         /// <summary>
@@ -47,7 +38,7 @@ namespace RadioClasses
         public bool GetStationWithID(string ID, out Station radioStation)
         {
             radioStation = new Station();
-            foreach (Station station in stations)
+            foreach (Station station in AllStationsInfo.Stations)
             {
                 if (station.ID == ID)
                 {
@@ -67,9 +58,9 @@ namespace RadioClasses
         public bool GetStationWithID(int ID, out Station radioStation)
         {
             radioStation = new Station();
-            if (ID < stations.Count && ID >= 0)
+            if (ID < AllStationsInfo.Stations.Count && ID >= 0)
             {
-                radioStation = stations[ID];
+                radioStation = AllStationsInfo.Stations[ID];
                 return true;
             }
             return false;
