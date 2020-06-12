@@ -83,7 +83,7 @@ namespace RadioGui
 
         private void ChangePlayerVolume()
         {
-            mediaElement.Volume = _radio.Volume / 10d;
+            mediaElement.Volume = _radio.Volume / 20d;
         }
 
         private void ChangePlayingStation(Uri url)
@@ -134,9 +134,9 @@ namespace RadioGui
             UpdateChanelLabel(station.Name);
         }
 
-        private void UpdateChanelLabel() => channelLabel.Content = _radio.IsOn ? $"Channel: {_radio.GetStation(_currentChannelID).Name}" : "Powered off";
+        private void UpdateChanelLabel() => channelLabel.Content = _radio.IsOn ? _radio.GetStation(_currentChannelID).Name : "Powered off";
 
-        private void UpdateChanelLabel(string name) => channelLabel.Content = _radio.IsOn ? $"Channel: {name}" : "Powered off";
+        private void UpdateChanelLabel(string name) => channelLabel.Content = _radio.IsOn ? name : "Powered off";
 
         private void UpdateMuteButton() => muteButton.Content = _radio.IsOn && _radio.IsMuted ? "Unmute" : "Mute";
     }

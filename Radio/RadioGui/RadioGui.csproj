@@ -4,10 +4,16 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <AssemblyName>Radio</AssemblyName>
+    <ApplicationIcon>Martz90-Hex-Radio.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClassesApp\Radio.csproj" />
+    <ProjectReference Include="..\ClassesApp\RadioClasses.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Images\" />
   </ItemGroup>
 
 </Project>

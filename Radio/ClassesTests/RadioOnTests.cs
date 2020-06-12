@@ -35,22 +35,10 @@ namespace ClassesTests
         }
 
         [Test]
-        public void PlayTest()
-        {
-            // arrange
-            _radio.Channel = 3;
-            // act
-            var message = _radio.Play();
-            // assert
-            Assert.AreEqual("Playing channel 3", message);
-            
-        }
-
-        [Test]
         public void TurnOffTest()
         {
             _radio.ToggelPower();
-            Assert.AreEqual("Radio is off", _radio.Play());
+            Assert.AreEqual(_radio.IsOn, false);
         }
     }
 }

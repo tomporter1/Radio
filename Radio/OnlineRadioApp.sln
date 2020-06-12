@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Radio", "ClassesApp\Radio.csproj", "{C56360B3-BF4C-4986-A887-68B18D66C81D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RadioClasses", "ClassesApp\RadioClasses.csproj", "{C56360B3-BF4C-4986-A887-68B18D66C81D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "ClassesTests\UnitTests.csproj", "{53C52DA1-325B-4599-91CA-B5E769FE3E95}"
 EndProject

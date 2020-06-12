@@ -24,7 +24,6 @@ namespace ClassesTests
             Assert.AreEqual(r.IsOn, false);
             Assert.AreEqual(r.IsMuted, false);
             Assert.AreEqual(r.Volume, 5);
-            Assert.AreEqual(r.Play(), "Radio is off");
         }
 
         [TestCase(0, 1)]

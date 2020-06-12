@@ -34,15 +34,6 @@ namespace RadioClasses
             _volume = 5;           
         }
 
-        public string Play()
-        {
-            if (_on)
-            {
-                return $"Playing channel {Channel}";
-            }
-            return "Radio is off";
-        }
-
         public Station GetStation(int id)
         {
             if (_allStations.GetStationWithID(id, out Station radioStation))

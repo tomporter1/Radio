@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RadioGui"
         mc:Ignorable="d"
-        Title="QuickPlayWindow" Height="194" Width="404">
+        Title="Quick Play" Height="232" Width="404" ResizeMode="NoResize" Background="#FF181818">
     <Grid>
-        <Label x:Name="nameLabel" Content="Station Name" HorizontalAlignment="Left" Height="36" Margin="32,18,0,0" VerticalAlignment="Top" Width="95" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-        <Label x:Name="urlLabel" Content="Station Stream URL" HorizontalAlignment="Left" Height="36" Margin="11,59,0,0" VerticalAlignment="Top" Width="116" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="36" Margin="144,18,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" FontSize="20" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="urlTextBox" HorizontalAlignment="Left" Height="36" Margin="144,59,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" FontSize="20" VerticalContentAlignment="Center"/>
-        <Button x:Name="quickPlayButton" Content="Play" HorizontalAlignment="Left" Height="37" Margin="11,109,0,0" VerticalAlignment="Top" Width="365" Click="quickPlayButton_Click"/>
+        <Label x:Name="nameLabel" Content="Station Name" HorizontalAlignment="Left" Height="36" Margin="32,18,0,0" VerticalAlignment="Top" Width="95" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="White"/>
+        <Label x:Name="urlLabel" Content="Station Stream URL" HorizontalAlignment="Left" Height="36" Margin="11,59,0,0" VerticalAlignment="Top" Width="116" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="White"/>
+        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="36" Margin="144,18,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" FontSize="20" VerticalContentAlignment="Center" Background="#FF535353" Foreground="White" SelectionBrush="#FF003B6A"/>
+        <TextBox x:Name="urlTextBox" HorizontalAlignment="Left" Height="36" Margin="144,59,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" FontSize="20" VerticalContentAlignment="Center" Background="#FF535353" Foreground="White" SelectionBrush="#FF003B6A"/>
+        <Button x:Name="quickPlayButton" Content="Play" HorizontalAlignment="Left" Height="37" Margin="11,109,0,0" VerticalAlignment="Top" Width="365" Click="quickPlayButton_Click" Background="#FF535353" BorderBrush="#FF474747" Foreground="White"/>
+        <Button x:Name="getMoreUrlButton" Content="Find more radio URLs here" HorizontalAlignment="Left" Height="37" Margin="11,151,0,0" VerticalAlignment="Top" Width="365" Click="GetMoreUrlButton_Click" Background="#FF535353" BorderBrush="#FF474747" Foreground="White"/>
 
     </Grid>
 </Window>

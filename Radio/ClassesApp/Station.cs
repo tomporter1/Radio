@@ -31,7 +31,7 @@ namespace RadioClasses
         public Station()
         {
             Name = "";
-            _url = "about:blank";
+            _url = "about:blank"; //defualt blank url that won't break the Uri class
             ID = "";
         }
 
@@ -43,14 +43,14 @@ namespace RadioClasses
         public bool Equals(Station other)
         {
             return other != null &&
+                   _url == other._url &&
                    Name == other.Name &&
-                   EqualityComparer<Uri>.Default.Equals(URL, other.URL) &&
                    ID == other.ID;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Name, URL, ID);
+            return HashCode.Combine(_url, Name, ID);
         }
 
         public static bool operator ==(Station left, Station right)
@@ -61,6 +61,6 @@ namespace RadioClasses
         public static bool operator !=(Station left, Station right)
         {
             return !(left == right);
-        }
+        }    
     }
 }

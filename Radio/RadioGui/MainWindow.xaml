@@ -5,28 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RadioGui"
         mc:Ignorable="d"
-        Title="MainWindow" Height="317" Width="487">
+        Title="Radio" Height="317" Width="487" ResizeMode="NoResize" Background="#FF181818">
 
     <Grid>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_File">
-                <MenuItem Header="Quick connect" Click="ShowQuickConnect_Click"/>
-                <MenuItem Header="Manage stations" Click="ShowManageStations_Click"/>
+        <Menu DockPanel.Dock="Top" Background="#FF181818" Height="17" VerticalAlignment="Top">
+            <MenuItem Header="_File" Foreground="White">
+                <MenuItem Header="Quick connect" Click="ShowQuickConnect_Click"  Foreground="Black"/>
+                <MenuItem Header="Manage stations" Click="ShowManageStations_Click" Foreground="Black"/>
                 <Separator />
-                <MenuItem Header="_Exit" Click="Exit_Click"/>
+                <MenuItem Header="_Exit" Click="Exit_Click" Foreground="Black"/>
             </MenuItem>
         </Menu>
-        
-        <Button x:Name="channel1Button" Content="Channel 1" HorizontalAlignment="Left" Height="70" Margin="10,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="0"/>
-        <Button x:Name="channel2Button" Content="Channel 2" HorizontalAlignment="Left" Height="70" Margin="124,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="1"/>
-        <Button x:Name="channel3Button" Content="Channel 3" HorizontalAlignment="Left" Height="70" Margin="239,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="2"/>
-        <Button x:Name="channel4Button" Content="Channel 4" HorizontalAlignment="Left" Height="70" Margin="354,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="3"/>
-        <Label x:Name="channelLabel" Content="Label" HorizontalAlignment="Left" Height="50" Margin="10,15,0,0" VerticalAlignment="Top" Width="295" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"/>
-        <Button x:Name="powerButton" Content="Power" HorizontalAlignment="Left" Height="50" Margin="310,15,0,0" VerticalAlignment="Top" Width="154" Click="PowerButton_Click"/>
-        <Button x:Name="muteButton" Content="Mute" HorizontalAlignment="Left" Height="50" Margin="310,75,0,0" VerticalAlignment="Top" Width="154" Click="MuteButton_Click"/>
-        <Button x:Name="volUpButton" Content="Volume up" HorizontalAlignment="Left" Height="49" Margin="239,221,0,0" VerticalAlignment="Top" Width="225" DataContext="1" Click="AdjustVolumeButton_Click"/>
-        <Button x:Name="voldownButton" Content="Volume down" HorizontalAlignment="Left" Height="49" Margin="10,221,0,0" VerticalAlignment="Top" Width="224" DataContext="-1" Click="AdjustVolumeButton_Click"/>
-        <Label x:Name="volumeLabel" Content="Label" HorizontalAlignment="Left" Height="50" Margin="10,75,0,0" VerticalAlignment="Top" Width="295" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"/>
+
+        <Button x:Name="channel1Button" Content="Channel 1" HorizontalAlignment="Left" Height="70" Margin="10,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="0" Background="#FF535353" Foreground="White" BorderBrush="#FF474747"/>
+        <Button x:Name="channel2Button" Content="Channel 2" HorizontalAlignment="Left" Height="70" Margin="124,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="1" Background="#FF535353" Foreground="White" BorderBrush="#FF474747"/>
+        <Button x:Name="channel3Button" Content="Channel 3" HorizontalAlignment="Left" Height="70" Margin="239,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="2" Background="#FF535353" Foreground="White" BorderBrush="#FF474747"/>
+        <Button x:Name="channel4Button" Content="Channel 4" HorizontalAlignment="Left" Height="70" Margin="354,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="3" Background="#FF535353" Foreground="White" BorderBrush="#FF474747"/>
+        <Label x:Name="channelLabel" Content="Label" HorizontalAlignment="Left" Height="46" Margin="10,25,0,0" VerticalAlignment="Top" Width="295" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="White"/>
+        <Button x:Name="powerButton" Content="Power" HorizontalAlignment="Left" Height="45" Margin="310,25,0,0" VerticalAlignment="Top" Width="154" Click="PowerButton_Click" Background="#FF535353" Foreground="White" BorderBrush="#FF474747"/>
+        <Button x:Name="muteButton" Content="Mute" HorizontalAlignment="Left" Height="50" Margin="310,75,0,0" VerticalAlignment="Top" Width="154" Click="MuteButton_Click" Background="#FF535353" Foreground="White" BorderBrush="#FF474747">
+        </Button>
+        <Button x:Name="volUpButton" Content="Volume up" HorizontalAlignment="Left" Height="49" Margin="239,221,0,0" VerticalAlignment="Top" Width="225" DataContext="1" Click="AdjustVolumeButton_Click" Background="#FF535353" Foreground="White" BorderBrush="#FF474747"/>
+        <Button x:Name="voldownButton" Content="Volume down" HorizontalAlignment="Left" Height="49" Margin="10,221,0,0" VerticalAlignment="Top" Width="224" DataContext="-1" Click="AdjustVolumeButton_Click" Background="#FF535353" Foreground="White" BorderBrush="#FF474747"/>
+        <Label x:Name="volumeLabel" Content="Label" HorizontalAlignment="Left" Height="50" Margin="10,75,0,0" VerticalAlignment="Top" Width="295" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="White" />
         <MediaElement x:Name="mediaElement" HorizontalAlignment="Left" Height="90" Margin="1141,434,0,0" VerticalAlignment="Top" Width="140" Volume="0" UnloadedBehavior="Manual" LoadedBehavior="Manual"/>
 
 

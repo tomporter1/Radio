@@ -1,27 +1,53 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace RadioClasses
 {
-    public class RadioStations { public List<Station> Stations { get; set; } }
+    /*
+     *  To find more urls for more stations go to http://www.radiofeeds.co.uk/mp3.asp
+     */
+
+    public class RadioStations
+    {
+        public List<Station> Stations { get; set; }       
+    }
 
     public class AllStations
     {
-        string jsonPath = @"E:/Documents/Visual Studio Projects/Radio/Radio/ClassesApp/Resources/RadioStations.json";
+        //private string _jsonPathold = @"E:/Documents/Visual Studio Projects/Radio/Radio/ClassesApp/Resources/RadioStationsData.json";
 
+        private string _jsonPath = @"RadioStationsData.json";
         public RadioStations AllStationsInfo { get; private set; }
 
         public AllStations()
         {
-            AllStationsInfo = JsonConvert.DeserializeObject<RadioStations>(File.ReadAllText(
-                jsonPath));
+            if (File.Exists(_jsonPath))
+            {
+                AllStationsInfo = JsonConvert.DeserializeObject<RadioStations>(File.ReadAllText(_jsonPath));
+            }
+            else
+            {
+                AllStationsInfo = new RadioStations()
+                {
+                    Stations = new List<Station>() 
+                    { 
+                        new Station("R1", "Radio 1", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p"),
+                        new Station("R2", "Radio 2", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio2_mf_p"),
+                        new Station("RMan", "Radio Manchester", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_lrmanc_mf_p?s=1591193950&e=1591208350&h=75b3dec246d371cd71071925f9f4735a"),
+                        new Station("RX", "Radio X", "http://media-ice.musicradio.com/RadioXUKMP3")
+                    }
+                };
+                SerializeData();
+            }
         }
 
         public void SerializeData()
         {
             string JsonFile = JsonConvert.SerializeObject(AllStationsInfo, Formatting.Indented);
-            File.WriteAllText(jsonPath, JsonFile);
+            File.WriteAllText(_jsonPath, JsonFile);
         }
 
         public void UpdateStationEntry(Station newStation, int index)
@@ -37,15 +63,11 @@ namespace RadioClasses
         /// <returns></returns>
         public bool GetStationWithID(string ID, out Station radioStation)
         {
+            radioStation = AllStationsInfo.Stations.Where(s => s.ID == ID).FirstOrDefault();
+            if (radioStation != null)
+                return true;
+
             radioStation = new Station();
-            foreach (Station station in AllStationsInfo.Stations)
-            {
-                if (station.ID == ID)
-                {
-                    radioStation = station;
-                    return true;
-                }
-            }
             return false;
         }
 

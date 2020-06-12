@@ -1,4 +1,6 @@
 ﻿using RadioClasses;
+using System;
+using System.Diagnostics;
 using System.Windows;
 
 namespace RadioGui
@@ -29,6 +31,11 @@ namespace RadioGui
                 _mainWindow.PlayStation(quickPlayStation);
                 Close();
             }
+        }
+
+        private void GetMoreUrlButton_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("cmd", "/C start" + " " + "http://www.radiofeeds.co.uk/mp3.asp");
         }
     }
 }

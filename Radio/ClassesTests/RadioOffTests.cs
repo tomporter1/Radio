@@ -29,21 +29,6 @@ namespace ClassesTests
             _radio.Channel = newChannel;
             // assert
             Assert.AreEqual(0, _radio.Channel);
-        }
-        [Test]
-        public void PlayTest()
-        {
-            // act
-            var message = _radio.Play();
-            // assert
-            Assert.AreEqual("Radio is off", message);        
-        }
-
-        [Test]
-        public void TurnOnTest()
-        {
-            _radio.ToggelPower();
-            Assert.AreEqual("Playing channel 0", _radio.Play());
-        }
+        }      
     }
 }
