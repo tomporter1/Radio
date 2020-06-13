@@ -96,6 +96,7 @@ namespace RadioGui
         private void StopPlaying()
         {
             mediaElement.Stop();
+            mediaElement.Source = null;
         }
 
         private void UpdateVolLabel()
