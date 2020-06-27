@@ -2,6 +2,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace RadioGui
 {
@@ -45,13 +46,13 @@ namespace RadioGui
             _radio.ToggelPower();
             UpdateChanelLabel();
             UpdateVolLabel();
-
+            ToggelPowerImage();
             if (_radio.IsOn)
                 ChangePlayingStation(_radio.GetStation(_currentChannelID).URL);
             else
                 StopPlaying();
         }
-
+        
         internal void ReloadStations()
         {
             if (_radio.IsOn)
@@ -139,6 +140,14 @@ namespace RadioGui
 
         private void UpdateChanelLabel(string name) => channelLabel.Content = _radio.IsOn ? name : "Powered off";
 
-        private void UpdateMuteButton() => muteButton.Content = _radio.IsOn && _radio.IsMuted ? "Unmute" : "Mute";
+        private void UpdateMuteButton()
+        {
+            MuteImage.Source = new BitmapImage(new Uri((_radio.IsOn && _radio.IsMuted ? @"\Images\UnmuteIcon.png" : @"\Images\MuteIcon.png"), UriKind.Relative));
+        }
+        private void ToggelPowerImage()
+        {
+            PowerImage.Source = new BitmapImage(new Uri((_radio.IsOn ? @"\Images\PowerOff.png" : @"\Images\PowerOff.png"), UriKind.Relative));
+        }
+
     }
 }

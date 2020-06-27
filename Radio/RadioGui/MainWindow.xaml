@@ -5,10 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RadioGui"
         mc:Ignorable="d"
-        Title="Radio" Height="317" Width="487" ResizeMode="NoResize" Background="#FF181818">
+        Title="Radio" Height="413" Width="788" Background="#FF181818">
 
     <Grid>
-        <Menu DockPanel.Dock="Top" Background="#FF181818" Height="17" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="138*"/>
+            <RowDefinition Height="81*"/>
+            <RowDefinition Height="82*"/>
+        </Grid.RowDefinitions>
+        <Menu Background="#FF181818" Height="17" VerticalAlignment="Top">
             <MenuItem Header="_File" Foreground="White">
                 <MenuItem Header="Quick connect" Click="ShowQuickConnect_Click"  Foreground="Black"/>
                 <MenuItem Header="Manage stations" Click="ShowManageStations_Click" Foreground="Black"/>
@@ -16,21 +21,48 @@
                 <MenuItem Header="_Exit" Click="Exit_Click" Foreground="Black"/>
             </MenuItem>
         </Menu>
-
-        <Button x:Name="channel1Button" Content="Channel 1" HorizontalAlignment="Left" Height="70" Margin="10,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="0" Background="#FF535353" Foreground="White" BorderBrush="#FF474747"/>
-        <Button x:Name="channel2Button" Content="Channel 2" HorizontalAlignment="Left" Height="70" Margin="124,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="1" Background="#FF535353" Foreground="White" BorderBrush="#FF474747"/>
-        <Button x:Name="channel3Button" Content="Channel 3" HorizontalAlignment="Left" Height="70" Margin="239,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="2" Background="#FF535353" Foreground="White" BorderBrush="#FF474747"/>
-        <Button x:Name="channel4Button" Content="Channel 4" HorizontalAlignment="Left" Height="70" Margin="354,141,0,0" VerticalAlignment="Top" Width="110" Click="ChannelButton_Click" DataContext="3" Background="#FF535353" Foreground="White" BorderBrush="#FF474747"/>
-        <Label x:Name="channelLabel" Content="Label" HorizontalAlignment="Left" Height="46" Margin="10,25,0,0" VerticalAlignment="Top" Width="295" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="White"/>
-        <Button x:Name="powerButton" Content="Power" HorizontalAlignment="Left" Height="45" Margin="310,25,0,0" VerticalAlignment="Top" Width="154" Click="PowerButton_Click" Background="#FF535353" Foreground="White" BorderBrush="#FF474747"/>
-        <Button x:Name="muteButton" Content="Mute" HorizontalAlignment="Left" Height="50" Margin="310,75,0,0" VerticalAlignment="Top" Width="154" Click="MuteButton_Click" Background="#FF535353" Foreground="White" BorderBrush="#FF474747">
-        </Button>
-        <Button x:Name="volUpButton" Content="Volume up" HorizontalAlignment="Left" Height="49" Margin="239,221,0,0" VerticalAlignment="Top" Width="225" DataContext="1" Click="AdjustVolumeButton_Click" Background="#FF535353" Foreground="White" BorderBrush="#FF474747"/>
-        <Button x:Name="voldownButton" Content="Volume down" HorizontalAlignment="Left" Height="49" Margin="10,221,0,0" VerticalAlignment="Top" Width="224" DataContext="-1" Click="AdjustVolumeButton_Click" Background="#FF535353" Foreground="White" BorderBrush="#FF474747"/>
-        <Label x:Name="volumeLabel" Content="Label" HorizontalAlignment="Left" Height="50" Margin="10,75,0,0" VerticalAlignment="Top" Width="295" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="White" />
-        <MediaElement x:Name="mediaElement" HorizontalAlignment="Left" Height="90" Margin="1141,434,0,0" VerticalAlignment="Top" Width="140" Volume="0" UnloadedBehavior="Manual" LoadedBehavior="Manual"/>
-
-
-
+        <MediaElement x:Name="mediaElement" HorizontalAlignment="Left" Height="90" Margin="1141,215,0,0" VerticalAlignment="Top" Width="140" Volume="0" UnloadedBehavior="Manual" LoadedBehavior="Manual" Grid.Row="2"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65*"/>
+                <RowDefinition Height="73*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="253*"/>
+                <ColumnDefinition Width="234*"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="channelLabel" Content="Label" HorizontalAlignment="Stretch" Margin="10,10,10,10" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="30" Foreground="White" Grid.Column="0" Grid.Row="0" />
+            <Label x:Name="volumeLabel" Content="Label" HorizontalAlignment="Stretch"  Margin="10,10,10,10" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="30" Foreground="White" Grid.Column="0" Grid.Row="1" />
+            <Button x:Name="powerButton" HorizontalAlignment="Stretch" Margin="10,10,10,10" VerticalAlignment="Stretch" Click="PowerButton_Click" Background="#FF535353" Foreground="White" BorderBrush="#FF474747" Grid.Column="1" Grid.Row="0">
+                <Image x:Name="PowerImage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,3,0,3" Source="/Images/PowerOn.png"/>
+            </Button>
+            <Button x:Name="muteButton" HorizontalAlignment="Stretch" Margin="10,10,10,10" VerticalAlignment="Stretch" Click="MuteButton_Click" Background="#FF535353" Foreground="White" BorderBrush="#FF474747" Grid.Column="1" Grid.Row="1">
+                <Image x:Name="MuteImage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,3,0,3" Source="/Images/MuteIcon.png"/>
+            </Button>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="channel1Button" Content="Channel 1" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch"  Click="ChannelButton_Click" DataContext="0" Background="#FF535353" Foreground="White" BorderBrush="#FF474747" Grid.Column="0"/>
+            <Button x:Name="channel2Button" Content="Channel 2" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Click="ChannelButton_Click" DataContext="1" Background="#FF535353" Foreground="White" BorderBrush="#FF474747" Grid.Column="1"/>
+            <Button x:Name="channel3Button" Content="Channel 3" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Click="ChannelButton_Click" DataContext="2" Background="#FF535353" Foreground="White" BorderBrush="#FF474747" Grid.Column="2"/>
+            <Button x:Name="channel4Button" Content="Channel 4" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Click="ChannelButton_Click" DataContext="3" Background="#FF535353" Foreground="White" BorderBrush="#FF474747" Grid.Column="3"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="voldownButton"  HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" DataContext="-1" Click="AdjustVolumeButton_Click" Background="#FF535353" Foreground="White" BorderBrush="#FF474747" Grid.Column="0">
+                <Image x:Name="image" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,3,0,3" Source="/Images/VolDown.png"/>
+            </Button>
+            <Button x:Name="volUpButton"  HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" DataContext="1" Click="AdjustVolumeButton_Click" Background="#FF535353" Foreground="White" BorderBrush="#FF474747" Grid.Column="1">
+                <Image x:Name="image1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,3,0,3" Source="/Images/VolUp.png"/>
+            </Button>
+        </Grid>
     </Grid>
 </Window>
