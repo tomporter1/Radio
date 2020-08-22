@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 
 namespace RadioClasses
-{
-    public class RadioStation : IEquatable<RadioStation>, IStreamable
+{  
+    internal class StationsRoot
+    {
+        public List<RadioStation> RadioStations { get; set; }
+    }
+
+    internal class RadioStation: IEquatable<RadioStation>, IStreamable
     {
         private string _url;
 
@@ -12,7 +17,6 @@ namespace RadioClasses
         public Uri URL { get => new Uri(_url); set => _url = value.ToString(); }
         public string ID { get; set; }
 
-        ///////////////////////Methods///////////////////////
 
         public RadioStation(string id, string name, string url)
         {

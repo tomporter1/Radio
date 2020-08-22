@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,30 +10,23 @@ namespace RadioClasses
      *  To find more urls for more stations go to http://www.radiofeeds.co.uk/mp3.asp
      */
 
-    internal class RadioStations
+    internal class StationsDataManager
     {
-        internal List<RadioStation> Stations { get; set; }       
-    }
+        private readonly string _jsonPath = AppDomain.CurrentDomain.BaseDirectory + "StationsData.json";
+        public StationsRoot AllStationsInfo { get; private set; }
 
-    internal class AllStations
-    {
-        //private string _jsonPathold = @"E:/Documents/Visual Studio Projects/Radio/Radio/ClassesApp/Resources/RadioStationsData.json";
-
-        private string _jsonPath = @"RadioStationsData.json";
-        public RadioStations AllStationsInfo { get; private set; }
-
-        public AllStations()
+        public StationsDataManager()
         {
             if (File.Exists(_jsonPath))
             {
-                AllStationsInfo = JsonConvert.DeserializeObject<RadioStations>(File.ReadAllText(_jsonPath));
+                AllStationsInfo = JsonConvert.DeserializeObject<StationsRoot>(File.ReadAllText(_jsonPath));
             }
             else
             {
-                AllStationsInfo = new RadioStations()
+                AllStationsInfo = new StationsRoot()
                 {
-                    Stations = new List<RadioStation>() 
-                    { 
+                    RadioStations = new List<RadioStation>()
+                    {
                         new RadioStation("R1", "Radio 1", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p"),
                         new RadioStation("R2", "Radio 2", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio2_mf_p"),
                         new RadioStation("RMan", "Radio Manchester", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_lrmanc_mf_p?s=1591193950&e=1591208350&h=75b3dec246d371cd71071925f9f4735a"),
@@ -49,9 +43,9 @@ namespace RadioClasses
             File.WriteAllText(_jsonPath, JsonFile);
         }
 
-        internal void UpdateStationEntry(RadioStation newStation, int index)
+        internal void UpdateStationEntry(IStreamable newStation, int index)
         {
-            AllStationsInfo.Stations[index] = newStation;
+            AllStationsInfo.RadioStations[index] = (RadioStation)newStation;
         }
 
         /// <summary>
@@ -60,9 +54,9 @@ namespace RadioClasses
         /// <param name="ID"></param>
         /// <param name="radioStation"></param>
         /// <returns></returns>
-        internal bool GetStationWithID(string ID, out RadioStation radioStation)
+        internal bool GetStationWithID(string ID, out IStreamable radioStation)
         {
-            radioStation = AllStationsInfo.Stations.Where(s => s.ID == ID).FirstOrDefault();
+            radioStation = AllStationsInfo.RadioStations.Where(s => s.ID == ID).FirstOrDefault();
             if (radioStation != null)
                 return true;
 
@@ -76,12 +70,12 @@ namespace RadioClasses
         /// <param name="ID"></param>
         /// <param name="radioStation"></param>
         /// <returns></returns>
-        internal bool GetStationWithID(int ID, out RadioStation radioStation)
+        internal bool GetStationWithID(int ID, out IStreamable radioStation)
         {
             radioStation = new RadioStation();
-            if (ID < AllStationsInfo.Stations.Count && ID >= 0)
+            if (ID < AllStationsInfo.RadioStations.Count && ID >= 0)
             {
-                radioStation = AllStationsInfo.Stations[ID];
+                radioStation = AllStationsInfo.RadioStations[ID];
                 return true;
             }
             return false;

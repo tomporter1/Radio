@@ -27,7 +27,7 @@ namespace RadioGui
         {
             if (nameTextBox.Text != "" && urlTextBox.Text != "")
             {
-                RadioStation quickPlayStation = new RadioStation("", nameTextBox.Text, urlTextBox.Text);
+                IStreamable quickPlayStation = Radio.MakeStation("", nameTextBox.Text, urlTextBox.Text);
                 _mainWindow.PlayStation(quickPlayStation);
                 Close();
             }

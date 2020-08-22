@@ -6,20 +6,21 @@ namespace RadioClasses
     public class Radio
     {
         ///////////////////////Fields///////////////////////
+        private const int _maxVol = 10, _maxNumOfStations = 4;
         private int _channel, _volume;
         private bool _on, _isMuted;
-        private AllStations _allStations = new AllStations();
+        private StationsDataManager _stationsData = new StationsDataManager();
 
         ///////////////////////Properties///////////////////////
         public int Channel
         {
             get => _channel;
-            set => _channel = _on && Enumerable.Range(0, 4).Contains(value) ? value : _channel;
+            set => _channel = _on && Enumerable.Range(0, _maxNumOfStations).Contains(value) ? value : _channel;
         }
         public int Volume
         {
             get => _volume;
-            set => _volume = _on && !_isMuted && Enumerable.Range(0, 11).Contains(value) ? value : _volume;
+            set => _volume = _on && !_isMuted && Enumerable.Range(0, _maxVol + 1).Contains(value) ? value : _volume;
         }
         public bool IsMuted { get => _isMuted; set => _isMuted = value; }
         public bool IsOn { get => _on; set => _on = value; }
@@ -31,24 +32,26 @@ namespace RadioClasses
             _channel = 0;
             _on = false;
             _isMuted = false;
-            _volume = 5;           
+            _volume = 5;
         }
 
-        public RadioStation GetStation(int id)
+        public IStreamable GetStation(int id)
         {
-            if (_allStations.GetStationWithID(id, out RadioStation radioStation))
+            if (_stationsData.GetStationWithID(id, out IStreamable radioStation))
                 return radioStation;
             return new RadioStation();
         }
 
-        public void UpdateChannelData(RadioStation newStation, int id)
+        public void UpdateChannelData(IStreamable newStation, int id)
         {
-            _allStations.UpdateStationEntry(newStation, id);
-            _allStations.SerializeData();
+            _stationsData.UpdateStationEntry(newStation, id);
+            _stationsData.SerializeData();
         }
 
         public void ToggelPower() => _on = !_on;
 
         public void ToggleMute() => _isMuted = !_isMuted;
+
+        public static IStreamable MakeStation(string url, string name, string id) => new RadioStation(url, name, id);
     }
 }

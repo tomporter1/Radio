@@ -9,4 +9,10 @@
     <PackageReference Include="NAudio" Version="1.10.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="StationsData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
