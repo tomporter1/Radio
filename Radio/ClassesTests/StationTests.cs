@@ -1,8 +1,5 @@
 ﻿using NUnit.Framework;
 using RadioClasses;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ClassesTests
 {
@@ -11,8 +8,8 @@ namespace ClassesTests
         [Test]
         public void EmptyStationAreEqualTest()
         {
-            Station s1 = new Station();
-            Station s2 = new Station();
+            IStreamable s1 = Radio.MakeStation();
+            IStreamable s2 = Radio.MakeStation();
 
             bool result = s1.Equals(s2);
 
@@ -22,8 +19,8 @@ namespace ClassesTests
         [Test]
         public void StationAreEqualTest()
         {
-            Station s1 = new Station("Station 1", "Best radio station eva", "radio.com");
-            Station s2 = new Station("Station 1", "Best radio station eva", "radio.com");
+            IStreamable s1 = Radio.MakeStation("Station 1", "Best radio station eva", "radio.com");
+            IStreamable s2 = Radio.MakeStation("Station 1", "Best radio station eva", "radio.com");
 
             bool result = s1.Equals(s2);
 
@@ -33,8 +30,8 @@ namespace ClassesTests
         [Test]
         public void EmptyStationObjectAreEqualTest()
         {
-            object s1 = new Station();
-            object s2 = new Station();
+            IStreamable s1 = Radio.MakeStation();
+            IStreamable s2 = Radio.MakeStation();
 
             bool result = s1.Equals(s2);
 
@@ -44,8 +41,8 @@ namespace ClassesTests
         [Test]
         public void StationObjectAreEqualTest()
         {
-            object s1 = new Station("Station 1", "Best radio station eva", "radio.com");
-            object s2 = new Station("Station 1", "Best radio station eva", "radio.com");
+            IStreamable s1 = Radio.MakeStation("Station 1", "Best radio station eva", "radio.com");
+            IStreamable s2 = Radio.MakeStation("Station 1", "Best radio station eva", "radio.com");
 
             bool result = s1.Equals(s2);
 

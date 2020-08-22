@@ -1,10 +1,12 @@
 using NUnit.Framework;
 using RadioClasses;
+
 namespace ClassesTests
 {
     public class RadioOnTests
     {
         private Radio _radio;
+
         [SetUp]
         public void Setup()
         {

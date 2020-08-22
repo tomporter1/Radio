@@ -1,10 +1,12 @@
 using NUnit.Framework;
 using RadioClasses;
+
 namespace ClassesTests
 {
     public class RadioOffTests
     {
         private Radio _radio;
+
         [SetUp]
         public void Setup()
         {
@@ -29,6 +31,6 @@ namespace ClassesTests
             _radio.Channel = newChannel;
             // assert
             Assert.AreEqual(0, _radio.Channel);
-        }      
+        }
     }
 }

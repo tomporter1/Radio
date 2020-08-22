@@ -53,5 +53,7 @@ namespace RadioClasses
         public void ToggleMute() => _isMuted = !_isMuted;
 
         public static IStreamable MakeStation(string url, string name, string id) => new RadioStation(url, name, id);
+
+        public static IStreamable MakeStation() => new RadioStation();
     }
 }
