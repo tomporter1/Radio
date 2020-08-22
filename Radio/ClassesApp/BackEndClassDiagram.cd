@@ -7,13 +7,6 @@
       <FileName>AllStations.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RadioClasses.AllStations">
-    <Position X="1.25" Y="5.25" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAIAAgAAAAAACAIAAAAAAAAAAABAAA=</HashCode>
-      <FileName>AllStations.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="RadioClasses.Radio">
     <Position X="8.5" Y="5" Width="2.75" />
     <TypeIdentifier>
@@ -21,13 +14,27 @@
       <FileName>Radio.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RadioClasses.Station" BaseTypeListCollapsed="true">
+  <Class Name="RadioClasses.RadioStation" BaseTypeListCollapsed="true">
     <Position X="5.25" Y="2.25" Width="2.5" />
+    <NestedTypes>
+      <Class Name="RadioClasses.RadioStation.RadioStations" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>AllStations.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAAgAAAAAQAACQAAIAAAAAAAAAAAiA=</HashCode>
-      <FileName>Station.cs</FileName>
+      <HashCode>AAAAAAAAAAAAgAAIgAgAAAQAACQIAIAAAAAAAAABAiA=</HashCode>
+      <FileName>AllStations.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RadioClasses.AllStations">
+    <Position X="1.25" Y="5.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAgAAAAAACAIAAAAAAAAAAABAAA=</HashCode>
+      <FileName>AllStations.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Interface Name="RadioClasses.IStreamable">
     <Position X="10" Y="2.25" Width="2.75" />

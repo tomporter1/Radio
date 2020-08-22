@@ -34,14 +34,14 @@ namespace RadioClasses
             _volume = 5;           
         }
 
-        public Station GetStation(int id)
+        public RadioStation GetStation(int id)
         {
-            if (_allStations.GetStationWithID(id, out Station radioStation))
+            if (_allStations.GetStationWithID(id, out RadioStation radioStation))
                 return radioStation;
-            return new Station();
+            return new RadioStation();
         }
 
-        public void UpdateChannelData(Station newStation, int id)
+        public void UpdateChannelData(RadioStation newStation, int id)
         {
             _allStations.UpdateStationEntry(newStation, id);
             _allStations.SerializeData();

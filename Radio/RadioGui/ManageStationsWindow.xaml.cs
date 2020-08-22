@@ -37,7 +37,7 @@ namespace RadioGui
         {
             //get new data from the UI
             int selectedIndex = stationsListBox.SelectedIndex;
-            Station newStation = new Station(keyTextBox.Text.Trim(), nameTextBox.Text.Trim(), urlTextBox.Text.Trim());
+            RadioStation newStation = new RadioStation(keyTextBox.Text.Trim(), nameTextBox.Text.Trim(), urlTextBox.Text.Trim());
             
             //Update the information in the radio
             _radio.UpdateChannelData(newStation, selectedIndex);
@@ -54,7 +54,7 @@ namespace RadioGui
         {
             //gets the station info from the radio
             ListBox listBox = (ListBox)sender;
-            Station selectedStation = _radio.GetStation(listBox.SelectedIndex);
+            RadioStation selectedStation = _radio.GetStation(listBox.SelectedIndex);
          
             //puts the data in the text boxes for editing
             keyTextBox.Text = selectedStation.ID;

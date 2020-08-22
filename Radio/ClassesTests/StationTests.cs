@@ -11,8 +11,8 @@ namespace ClassesTests
         [Test]
         public void EmptyStationAreEqualTest()
         {
-            Station s1 = new Station();
-            Station s2 = new Station();
+            RadioStation s1 = new RadioStation();
+            RadioStation s2 = new RadioStation();
 
             bool result = s1.Equals(s2);
 
@@ -22,8 +22,8 @@ namespace ClassesTests
         [Test]
         public void StationAreEqualTest()
         {
-            Station s1 = new Station("Station 1", "Best radio station eva", "radio.com");
-            Station s2 = new Station("Station 1", "Best radio station eva", "radio.com");
+            RadioStation s1 = new RadioStation("Station 1", "Best radio station eva", "radio.com");
+            RadioStation s2 = new RadioStation("Station 1", "Best radio station eva", "radio.com");
 
             bool result = s1.Equals(s2);
 
@@ -33,8 +33,8 @@ namespace ClassesTests
         [Test]
         public void EmptyStationObjectAreEqualTest()
         {
-            object s1 = new Station();
-            object s2 = new Station();
+            object s1 = new RadioStation();
+            object s2 = new RadioStation();
 
             bool result = s1.Equals(s2);
 
@@ -44,8 +44,8 @@ namespace ClassesTests
         [Test]
         public void StationObjectAreEqualTest()
         {
-            object s1 = new Station("Station 1", "Best radio station eva", "radio.com");
-            object s2 = new Station("Station 1", "Best radio station eva", "radio.com");
+            object s1 = new RadioStation("Station 1", "Best radio station eva", "radio.com");
+            object s2 = new RadioStation("Station 1", "Best radio station eva", "radio.com");
 
             bool result = s1.Equals(s2);
 

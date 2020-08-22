@@ -130,7 +130,7 @@ namespace RadioGui
             Close();
         }
 
-        public void PlayStation(Station station)
+        public void PlayStation(RadioStation station)
         {
             ChangePlayingStation(station.URL);
             UpdateChanelLabel(station.Name);

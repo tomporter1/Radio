@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RadioClasses
 {
-    public class Station : IEquatable<Station>
+    public class RadioStation : IEquatable<RadioStation>, IStreamable
     {
         private string _url;
 
@@ -14,21 +14,21 @@ namespace RadioClasses
 
         ///////////////////////Methods///////////////////////
 
-        public Station(string id, string name, string url)
+        public RadioStation(string id, string name, string url)
         {
             Name = name;
             _url = url;
             ID = id;
         }
 
-        public Station(string id, string name, Uri url)
+        public RadioStation(string id, string name, Uri url)
         {
             Name = name;
             _url = url.ToString();
             ID = id;
         }
 
-        public Station()
+        public RadioStation()
         {
             Name = "";
             _url = "about:blank"; //defualt blank url that won't break the Uri class
@@ -37,10 +37,10 @@ namespace RadioClasses
 
         public override bool Equals(object obj)
         {
-            return Equals(obj as Station);
+            return Equals(obj as RadioStation);
         }
 
-        public bool Equals(Station other)
+        public bool Equals(RadioStation other)
         {
             return other != null &&
                    _url == other._url &&
@@ -53,14 +53,14 @@ namespace RadioClasses
             return HashCode.Combine(_url, Name, ID);
         }
 
-        public static bool operator ==(Station left, Station right)
+        public static bool operator ==(RadioStation left, RadioStation right)
         {
-            return EqualityComparer<Station>.Default.Equals(left, right);
+            return EqualityComparer<RadioStation>.Default.Equals(left, right);
         }
 
-        public static bool operator !=(Station left, Station right)
+        public static bool operator !=(RadioStation left, RadioStation right)
         {
             return !(left == right);
-        }    
+        }
     }
 }
