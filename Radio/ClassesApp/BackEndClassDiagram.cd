@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RadioClasses.RadioStations">
+    <Position X="1.25" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AllStations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RadioClasses.AllStations">
+    <Position X="1.25" Y="5.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAgAAAAAACAIAAAAAAAAAAABAAA=</HashCode>
+      <FileName>AllStations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RadioClasses.Radio">
+    <Position X="8.5" Y="5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAgAAAAAAAAEEAAIgAAASAAEAAgAAIAAgCAAAA=</HashCode>
+      <FileName>Radio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RadioClasses.Station" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAgAAAAAQAACQAAIAAAAAAAAAAAiA=</HashCode>
+      <FileName>Station.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="RadioClasses.IStreamable">
+    <Position X="10" Y="2.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAQAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IStreamable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
