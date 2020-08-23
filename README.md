@@ -1,10 +1,14 @@
 # Radio
-A basic radio that offers simple controls to stream 4 preset radio stations over the internet
+### Description
+A basic radio that offers simple controls to stream four present radio stations over the internet
+
+# User Guide
+
 
 # Class Diagrams
 
-## Radio Backend
+### Radio Backend
 ![Image of backend diagram](/ReadMeImages/BackEndClassDiagram.png)
 
-## Radio Gui
-![Image](/ReadMeImages/GUIClassDiagram.png)
+### Radio GUI
+![Image of GUI diagram](/ReadMeImages/GUIClassDiagram.png)
