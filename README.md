@@ -1,6 +1,6 @@
 # Radio
 ### Description
-A basic radio that offers simple controls to stream four present radio stations over the internet.
+A basic radio that offers simple controls to stream four pre-set radio stations over the internet.
 
 # User Guide
 When the application is launched, the following screen is shown.<br/>
