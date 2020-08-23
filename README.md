@@ -17,7 +17,7 @@ When the application is launched, the following screen is shown.<br/>
 |![Image of the station button](/ReadMeImages/StationButton.png)|Tunes the radio to that station|
 
 ### Modifying the saved radio stations
-Change to the information that is stored by the application about the radio stations is done at the Manage Stations Window.<br/>
+Changes to the information that is stored by the application about the radio stations is done at the Manage Stations Window.<br/>
 This window is accessed via clicking on File.<br/>
 Once you are on this window the information can be edited by selecting the station that needs changing then changing the information.<br/>
 ![Image of the manage stations window](/ReadMeImages/ManageStationsWindow.png)
