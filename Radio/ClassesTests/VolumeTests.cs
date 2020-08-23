@@ -1,23 +1,24 @@
 ﻿using NUnit.Framework;
 using RadioClasses;
+using RadioClasses.Interfaces;
 
 namespace ClassesTests
 {
     public class VolumeTests
     {
-        private Radio _radio;
+        private IRadio _radio;
 
         [SetUp]
         public void Setup()
         {
-            _radio = new Radio();
+            _radio = IRadioConstructor.CreateRadio();
             _radio.ToggelPower();
         }
 
         [Test]
         public void DefualtConstructorTest()
         {
-            Radio r = new Radio();
+            IRadio r = IRadioConstructor.CreateRadio();
             Assert.AreEqual(r.IsOn, false);
             Assert.AreEqual(r.IsMuted, false);
             Assert.AreEqual(r.Volume, 5);

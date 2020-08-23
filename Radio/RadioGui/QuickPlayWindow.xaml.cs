@@ -1,5 +1,4 @@
-﻿using RadioClasses;
-using System;
+﻿using RadioClasses.Interfaces;
 using System.Diagnostics;
 using System.Windows;
 
@@ -27,7 +26,7 @@ namespace RadioGui
         {
             if (nameTextBox.Text != "" && urlTextBox.Text != "")
             {
-                IStreamable quickPlayStation = Radio.MakeStation("", nameTextBox.Text, urlTextBox.Text);
+                IStreamable quickPlayStation = IRadio.MakeStation("", nameTextBox.Text, urlTextBox.Text);
                 _mainWindow.PlayStation(quickPlayStation);
                 Close();
             }

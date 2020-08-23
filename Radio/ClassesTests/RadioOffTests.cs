@@ -1,16 +1,17 @@
 using NUnit.Framework;
 using RadioClasses;
+using RadioClasses.Interfaces;
 
 namespace ClassesTests
 {
     public class RadioOffTests
     {
-        private Radio _radio;
+        private IRadio _radio;
 
         [SetUp]
         public void Setup()
         {
-            _radio = new Radio();
+            _radio = IRadioConstructor.CreateRadio();
         }
 
         [TestCase(0)]

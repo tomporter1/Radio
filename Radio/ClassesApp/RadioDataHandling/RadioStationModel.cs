@@ -1,22 +1,23 @@
-﻿using System;
+﻿using RadioClasses.Interfaces;
+using System;
 using System.Collections.Generic;
 
-namespace RadioClasses
-{  
+namespace RadioClasses.RadioDataHandling
+{
     internal class StationsRoot
     {
         public List<RadioStation> RadioStations { get; set; }
     }
 
-    internal class RadioStation: IEquatable<RadioStation>, IStreamable
+    internal class RadioStation : IEquatable<RadioStation>, IStreamable
     {
         private string _url;
 
         ///////////////////////Properties///////////////////////
         public string Name { get; set; }
+
         public Uri URL { get => new Uri(_url); set => _url = value.ToString(); }
         public string ID { get; set; }
-
 
         public RadioStation(string id, string name, string url)
         {

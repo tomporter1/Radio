@@ -1,4 +1,4 @@
-﻿using RadioClasses;
+﻿using RadioClasses.Interfaces;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,7 +9,8 @@ namespace RadioGui
     public partial class MainWindow : Window
     {
         ///////////////////////Fields///////////////////////
-        private Radio _radio = new Radio();
+        private IRadio _radio = IRadioConstructor.CreateRadio();
+
         private int _currentChannelID = 0;
 
         ///////////////////////Methods///////////////////////
@@ -18,7 +19,7 @@ namespace RadioGui
         {
             InitializeComponent();
 
-            //UI initialization 
+            //UI initialization
             ChangePlayerVolume();
             UpdateVolLabel();
             UpdateChanelLabel();
@@ -52,7 +53,7 @@ namespace RadioGui
             else
                 StopPlaying();
         }
-        
+
         internal void ReloadStations()
         {
             if (_radio.IsOn)
@@ -144,10 +145,10 @@ namespace RadioGui
         {
             MuteImage.Source = new BitmapImage(new Uri((_radio.IsOn && _radio.IsMuted ? @"\Images\UnmuteIcon.png" : @"\Images\MuteIcon.png"), UriKind.Relative));
         }
+
         private void ToggelPowerImage()
         {
             PowerImage.Source = new BitmapImage(new Uri((_radio.IsOn ? @"\Images\PowerOff.png" : @"\Images\PowerOff.png"), UriKind.Relative));
         }
-
     }
 }

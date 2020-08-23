@@ -1,10 +1,11 @@
 ﻿using Newtonsoft.Json;
+using RadioClasses.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace RadioClasses
+namespace RadioClasses.RadioDataHandling
 {
     /*
      *  To find more urls for more stations go to http://www.radiofeeds.co.uk/mp3.asp
@@ -12,7 +13,7 @@ namespace RadioClasses
 
     internal class StationsDataManager
     {
-        private readonly string _jsonPath = AppDomain.CurrentDomain.BaseDirectory + "StationsData.json";
+        private readonly string _jsonPath = AppDomain.CurrentDomain.BaseDirectory + "RadioDataHandling\\StationsData.json";
         public StationsRoot AllStationsInfo { get; private set; }
 
         public StationsDataManager()
@@ -49,7 +50,7 @@ namespace RadioClasses
         }
 
         /// <summary>
-        /// Returns true if there is a radio station with the string ID. 
+        /// Returns true if there is a radio station with the string ID.
         /// </summary>
         /// <param name="ID"></param>
         /// <param name="radioStation"></param>
