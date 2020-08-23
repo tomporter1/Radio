@@ -2,6 +2,7 @@
 ### Description
 A basic radio that offers simple controls to stream four pre-set radio stations over the internet.
 
+[Download executable](RadioApp.zip)
 # User Guide
 When the application is launched, the following screen is shown.<br/>
 *When it is launched for the first time there will be four stations saved in the radio by default but these can be changed*
