@@ -1,42 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="RadioGui.App">
-    <Position X="2.75" Y="1.5" Width="2.25" />
+    <Position X="7.25" Y="1.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>App.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RadioGui.MainWindow" BaseTypeListCollapsed="true">
-    <Position X="8.5" Y="1.5" Width="3" />
+  <Class Name="RadioGui.Windows.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4.75" Width="3" />
+    <AssociationLine Name="_radio" Type="RadioClasses.Interfaces.IRadio" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.75" Y="4.75" />
+        <Point X="1.75" Y="2" />
+        <Point X="2.5" Y="2" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAIGAAAAARAAAAQCAAAAgEAQEAIAAAQAAQAAAAAkAE=</HashCode>
-      <FileName>MainWindow.xaml.cs</FileName>
+      <FileName>Windows\MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_radio" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="RadioGui.ManageStationsWindow" BaseTypeListCollapsed="true">
-    <Position X="5.25" Y="1.5" Width="3" />
+  <Class Name="RadioGui.Windows.ManageStationsWindow" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="4.5" Width="3" />
+    <AssociationLine Name="_radio" Type="RadioClasses.Interfaces.IRadio" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.219" Y="4.5" />
+        <Point X="6.219" Y="1.938" />
+        <Point X="5.5" Y="1.938" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>BAAAAAAAAABAAAAAAIABAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
-      <FileName>ManageStationsWindow.xaml.cs</FileName>
+      <FileName>Windows\ManageStationsWindow.xaml.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_mainWindow" />
+      <Field Name="_radio" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="RadioGui.QuickPlayWindow" BaseTypeListCollapsed="true">
-    <Position X="11.75" Y="1.5" Width="2.5" />
+  <Class Name="RadioGui.Windows.QuickPlayWindow" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="7" Width="2.5" />
     <TypeIdentifier>
       <HashCode>CAAAAAAAAAAAAAAAIAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>QuickPlayWindow.xaml.cs</FileName>
+      <FileName>Windows\QuickPlayWindow.xaml.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_mainWindow" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="RadioGui.WindowSuper">
-    <Position X="0.5" Y="1.5" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>WindowSuper.cs</FileName>
-    </TypeIdentifier>
-  </Class>
+  <Interface Name="RadioClasses.Interfaces.IRadio">
+    <Position X="2.5" Y="0.5" Width="3" />
+    <TypeIdentifier />
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
