@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 
-namespace RadioGui
+namespace RadioGui.Windows
 {
     /// <summary>
     /// Interaction logic for QuickPlayWindow.xaml

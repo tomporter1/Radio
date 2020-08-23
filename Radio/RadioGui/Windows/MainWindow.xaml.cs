@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-namespace RadioGui
+namespace RadioGui.Windows
 {
     public partial class MainWindow : Window
     {

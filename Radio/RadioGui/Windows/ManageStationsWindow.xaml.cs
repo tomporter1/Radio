@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace RadioGui
+namespace RadioGui.Windows
 {
     /// <summary>
     /// Interaction logic for ManageStationsWindow.xaml
