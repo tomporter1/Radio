@@ -27,8 +27,17 @@ namespace RadioClasses
             set => _volume = _on && !_isMuted && Enumerable.Range(0, _maxVol + 1).Contains(value) ? value : _volume;
         }
 
-        public bool IsMuted { get => _isMuted; set => _isMuted = value; }
-        public bool IsOn { get => _on; set => _on = value; }
+        public bool IsMuted
+        {
+            get => _isMuted;
+            set => _isMuted = _on ? value : _isMuted;
+        }
+
+        public bool IsOn
+        {
+            get => _on; 
+            set => _on = value;
+        }
 
         ///////////////////////Methods///////////////////////
 

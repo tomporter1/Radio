@@ -12,16 +12,7 @@ namespace ClassesTests
         public void Setup()
         {
             _radio = IRadioConstructor.CreateRadio();
-            _radio.ToggelPower();
-        }
-
-        [Test]
-        public void DefualtConstructorTest()
-        {
-            IRadio r = IRadioConstructor.CreateRadio();
-            Assert.AreEqual(r.IsOn, false);
-            Assert.AreEqual(r.IsMuted, false);
-            Assert.AreEqual(r.Volume, 5);
+            _radio.IsOn = true;
         }
 
         [TestCase(0, 1)]
@@ -30,7 +21,7 @@ namespace ClassesTests
         {
             _radio.Volume = startVol;
             _radio.Volume += 1;
-            Assert.AreEqual(_radio.Volume, expectedVol);
+            Assert.That(_radio.Volume, Is.EqualTo(expectedVol));
         }
 
         [TestCase(0, 0)]
@@ -39,7 +30,7 @@ namespace ClassesTests
         {
             _radio.Volume = startVol;
             _radio.Volume -= 1;
-            Assert.AreEqual(_radio.Volume, expectedVol);
+            Assert.That(_radio.Volume, Is.EqualTo(expectedVol));
         }
 
         [TestCase(0, 0)]
@@ -49,7 +40,7 @@ namespace ClassesTests
             _radio.Volume = startVol;
             _radio.IsMuted = true;
             _radio.Volume -= 1;
-            Assert.AreEqual(_radio.Volume, expectedVol);
+            Assert.That(_radio.Volume, Is.EqualTo(expectedVol));
         }
 
         [TestCase(0, 0)]
@@ -59,17 +50,25 @@ namespace ClassesTests
             _radio.Volume = startVol;
             _radio.IsMuted = true;
             _radio.Volume += 1;
-            Assert.AreEqual(_radio.Volume, expectedVol);
+            Assert.That(_radio.Volume, Is.EqualTo(expectedVol));
         }
 
         [Test]
-        public void ToggleMuteTest()
+        public void ToggleMuteTest_WhenStaringFromMuted()
         {
-            Assert.AreEqual(_radio.IsMuted, false);
+            _radio.IsMuted = true;
             _radio.ToggleMute();
-            Assert.AreEqual(_radio.IsMuted, true);
+
+            Assert.That(_radio.IsMuted,Is.False);
+        }
+
+        [Test]
+        public void ToggleMuteTest_WhenStaringFromUnmuted()
+        {
+            _radio.IsMuted = false;
             _radio.ToggleMute();
-            Assert.AreEqual(_radio.IsMuted, false);
+
+            Assert.That(_radio.IsMuted, Is.True);
         }
     }
 }

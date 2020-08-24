@@ -17,7 +17,7 @@ namespace RadioClasses.Interfaces
 
         public void ToggleMute();
 
-        public static IStreamable MakeStation(string url, string name, string id) => new RadioStation(url, name, id);
+        public static IStreamable MakeStation(string id, string name, string url) => new RadioStation(id, name, url);
 
         public static IStreamable MakeStation() => new RadioStation();
     }

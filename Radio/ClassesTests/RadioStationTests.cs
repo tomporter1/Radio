@@ -1,58 +1,75 @@
 ﻿using NUnit.Framework;
-using RadioClasses;
 using RadioClasses.Interfaces;
 
 namespace ClassesTests
 {
     public class RadioStationTests
     {
-        private IRadio _radio;
-
-        [SetUp]
-        public void Setup()
-        {
-            _radio = IRadioConstructor.CreateRadio();
-        }
-
         [Test]
-        public void GetStationWithValidIntID()
+        public void GetStationWithValidIntId()
         {
+            IRadio _radio = IRadioConstructor.CreateRadio();
             IStreamable result = _radio.GetStation(0);
-            Assert.AreEqual("Radio 1", result.Name);
+
+            Assert.That(result.Name, Is.EqualTo("Radio 1"));
         }
 
         [TestCase(-1)]
         [TestCase(4)]
-        public void GetStationWithInvalidIntIDFromRadio(int id)
+        public void GetStationWithInvalidIntIdFromRadio(int id)
         {
-            IStreamable result = _radio.GetStation(-1);
-            Assert.AreEqual("", result.Name);
+            IRadio _radio = IRadioConstructor.CreateRadio();
+            IStreamable result = _radio.GetStation(id);
+
+            Assert.That(result.Name, Is.EqualTo(""));
         }
 
-        //[Test]
-        //public void GetStationWithValidIntID()
-        //{
-        //    bool result = _radio.GetStationWithID(0, out Station foundStation);
-        //    Assert.IsTrue(result);
-        //    Assert.AreEqual("Radio 1", foundStation.Name);
-        //}
+        [Test]
+        public void DefaultStationCreation_HasCorrect_Name()
+        {
+            IStreamable result = IRadio.MakeStation();
 
-        //[TestCase(-1)]
-        //[TestCase(4)]
-        //public void GetStationWithInvalidIntID(int id)
-        //{
-        //    bool result = _radio.GetStationWithID(id, out Station foundStation);
-        //    Assert.IsFalse(result);
-        //    Assert.AreEqual(new Station(), foundStation);
-        //}
+            Assert.That(result.Name, Is.EqualTo(""));
+        }
 
-        //[Test]
-        //public void UpdateChannelDataTest()
-        //{
-        //    IStreamable newStation = Radio.MakeStation("R1.1", "Radio 1.1", "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1.1_mf_p");
-        //    _radio.UpdateStationEntry(newStation,0);
+        [Test]
+        public void DefaultStationCreation_HasCorrect_Id()
+        {
+            IStreamable result = IRadio.MakeStation();
 
-        //    Assert.AreEqual(newStation, _radio.AllStationsInfo.Stations[0]);
-        //}
+            Assert.That(result.ID, Is.EqualTo(""));
+        }
+
+        [Test]
+        public void DefaultStationCreation_HasCorrect_Url()
+        {
+            IStreamable result = IRadio.MakeStation();
+          
+            Assert.That(result.ID, Is.EqualTo(""));
+        }
+
+        [Test]
+        public void StationCreation_HasCorrect_Name()
+        {
+            IStreamable result = IRadio.MakeStation("stationID", "stationName", "https://stationURL.com/");
+         
+            Assert.That(result.Name, Is.EqualTo("stationName"));
+        }
+
+        [Test]
+        public void StationCreation_HasCorrect_Url()
+        {
+            IStreamable result = IRadio.MakeStation("stationID", "stationName", "https://stationURL.com/");
+         
+            Assert.That(result.URL.ToString(), Is.EqualTo("https://stationurl.com/"));
+        }
+
+        [Test]
+        public void StationCreation_HasCorrect_Id()
+        {
+            IStreamable result = IRadio.MakeStation("stationID", "stationName", "https://stationURL.com/");
+          
+            Assert.That(result.ID, Is.EqualTo("stationID"));
+        }
     }
 }
