@@ -1,5 +1,4 @@
 ﻿using RadioClasses.Interfaces;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -24,28 +23,30 @@ namespace RadioGui.Windows
 
         private void PopulateListBox()
         {
-            stationsListBox.ItemsSource = null;
-            List<string> names = new List<string>();
-            for (int i = 0; i < 4; i++)
-            {
-                names.Add(_radio.GetStation(i).Name);
-            }
-            stationsListBox.ItemsSource = names;
+            //stationsListBox.ItemsSource = null;
+            //List<string> names = new List<string>();
+            //for (int i = 0; i < 4; i++)
+            //{
+            //    names.Add(_radio.GetStation(i).Name);
+            //}
+            stationsListBox.ItemsSource = _radio.GetAllStations();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             //get new data from the UI
             int selectedIndex = stationsListBox.SelectedIndex;
-            IStreamable newStation = IRadio.MakeStation(keyTextBox.Text.Trim(), nameTextBox.Text.Trim(), urlTextBox.Text.Trim());
+            //IStreamable newStation = IRadio.MakeStation(keyTextBox.Text.Trim(), nameTextBox.Text.Trim(), urlTextBox.Text.Trim());
 
             //Update the information in the radio
-            _radio.UpdateChannelData(newStation, selectedIndex);
+            _radio.UpdateChannelData(stationsListBox.SelectedItem, keyTextBox.Text.Trim(), nameTextBox.Text.Trim(), urlTextBox.Text.Trim());
 
             //refresh the ui to have the updata in it
             _mainWindow.ReloadStations();
             PopulateListBox();
             stationsListBox.SelectedIndex = selectedIndex;
+            
+            _mainWindow.RefreshButtonStationNames();
 
             MessageBox.Show("Changes Saved", "Radio");
         }

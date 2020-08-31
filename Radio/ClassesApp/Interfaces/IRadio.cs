@@ -1,4 +1,5 @@
 ﻿using RadioClasses.RadioDataHandling;
+using System.Collections.Generic;
 
 namespace RadioClasses.Interfaces
 {
@@ -11,11 +12,13 @@ namespace RadioClasses.Interfaces
 
         public IStreamable GetStation(int id);
 
-        public void UpdateChannelData(IStreamable newStation, int id);
+        public void UpdateChannelData(object station, string key, string name, string url);
 
         public void ToggelPower();
 
         public void ToggleMute();
+
+        public List<IStreamable> GetAllStations();
 
         public static IStreamable MakeStation(string id, string name, string url) => new RadioStation(id, name, url);
 

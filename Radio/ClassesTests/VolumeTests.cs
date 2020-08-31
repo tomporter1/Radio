@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using RadioClasses;
 using RadioClasses.Interfaces;
 
 namespace ClassesTests
@@ -59,7 +58,7 @@ namespace ClassesTests
             _radio.IsMuted = true;
             _radio.ToggleMute();
 
-            Assert.That(_radio.IsMuted,Is.False);
+            Assert.That(_radio.IsMuted, Is.False);
         }
 
         [Test]

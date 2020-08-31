@@ -58,6 +58,8 @@ namespace RadioClasses.RadioDataHandling
             return HashCode.Combine(_url, Name, ID);
         }
 
+        public override string ToString() => Name;
+
         public static bool operator ==(RadioStation left, RadioStation right)
         {
             return EqualityComparer<RadioStation>.Default.Equals(left, right);

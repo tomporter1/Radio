@@ -44,9 +44,17 @@ namespace RadioClasses.RadioDataHandling
             File.WriteAllText(_jsonPath, JsonFile);
         }
 
-        internal void UpdateStationEntry(IStreamable newStation, int index)
+        internal void UpdateStationEntry(object station, string key, string name, string url)
         {
-            AllStationsInfo.RadioStations[index] = (RadioStation)newStation;
+            int pos = AllStationsInfo.RadioStations.FindIndex(s => s.ID == ((RadioStation)station).ID && s.Name == ((RadioStation)station).Name);
+            if (pos >= 0 && pos < AllStationsInfo.RadioStations.Count)
+            {
+                AllStationsInfo.RadioStations[pos] = new RadioStation(key, name, url);
+            }
+            else
+            {
+                throw new Exception("The old station entry could not be found");
+            }
         }
 
         /// <summary>

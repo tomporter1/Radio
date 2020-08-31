@@ -1,6 +1,7 @@
 ﻿using RadioClasses.Interfaces;
 using RadioClasses.RadioDataHandling;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace RadioClasses
@@ -12,7 +13,7 @@ namespace RadioClasses
 
         private int _channel, _volume;
         private bool _on, _isMuted;
-        private StationsDataManager _stationsData = new StationsDataManager();
+        private readonly StationsDataManager _stationsData = new StationsDataManager();
 
         ///////////////////////Properties///////////////////////
         public int Channel
@@ -35,7 +36,7 @@ namespace RadioClasses
 
         public bool IsOn
         {
-            get => _on; 
+            get => _on;
             set => _on = value;
         }
 
@@ -56,14 +57,24 @@ namespace RadioClasses
             return new RadioStation();
         }
 
-        public void UpdateChannelData(IStreamable newStation, int id)
+        public void UpdateChannelData(object station, string key, string name, string url)
         {
-            _stationsData.UpdateStationEntry(newStation, id);
+            _stationsData.UpdateStationEntry(station,key,name,url);
             _stationsData.SerializeData();
         }
 
         public void ToggelPower() => _on = !_on;
 
         public void ToggleMute() => _isMuted = !_isMuted;
+
+        public List<IStreamable> GetAllStations()
+        {
+            List<IStreamable> output = new List<IStreamable>();
+            foreach (IStreamable station in _stationsData.AllStationsInfo.RadioStations)
+            {
+                output.Add(station);
+            }
+            return output;
+        }
     }
 }

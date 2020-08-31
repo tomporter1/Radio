@@ -8,8 +8,8 @@ namespace ClassesTests
     public class RadioOffTests
     {
         private IRadio _radio;
-        private static List<int> _validVolumes = Enumerable.Range(0, 11).ToList();
-        private static List<int> _validChannels = Enumerable.Range(0, 4).ToList();
+        private static readonly List<int> _validVolumes = Enumerable.Range(0, 11).ToList();
+        private static readonly List<int> _validChannels = Enumerable.Range(0, 4).ToList();
 
         [SetUp]
         public void Setup()
@@ -47,7 +47,7 @@ namespace ClassesTests
 
             Assert.That(_radio.Volume, Is.EqualTo(5));
         }
-        
+
         [TestCase(-1)]
         [TestCase(11)]
         public void ChangeToInvalidVolumeWhenOffTest(int newVlo)

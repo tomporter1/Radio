@@ -9,7 +9,7 @@ namespace RadioGui.Windows
     public partial class MainWindow : Window
     {
         ///////////////////////Fields///////////////////////
-        private IRadio _radio = IRadioConstructor.CreateRadio();
+        private readonly IRadio _radio = IRadioConstructor.CreateRadio();
 
         private int _currentChannelID = 0;
 
@@ -24,6 +24,11 @@ namespace RadioGui.Windows
             UpdateVolLabel();
             UpdateChanelLabel();
 
+            RefreshButtonStationNames();
+        }
+
+        internal void RefreshButtonStationNames()
+        {
             channel1Button.Content = _radio.GetStation(0).Name;
             channel2Button.Content = _radio.GetStation(1).Name;
             channel3Button.Content = _radio.GetStation(2).Name;
@@ -143,12 +148,12 @@ namespace RadioGui.Windows
 
         private void UpdateMuteButton()
         {
-            MuteImage.Source = new BitmapImage(new Uri((_radio.IsOn && _radio.IsMuted ? @"\Images\UnmuteIcon.png" : @"\Images\MuteIcon.png"), UriKind.Relative));
+            MuteImage.Source = new BitmapImage(new Uri(_radio.IsOn && _radio.IsMuted ? @"\Images\UnmuteIcon.png" : @"\Images\MuteIcon.png", UriKind.Relative));
         }
 
         private void ToggelPowerImage()
         {
-            PowerImage.Source = new BitmapImage(new Uri((_radio.IsOn ? @"\Images\PowerOff.png" : @"\Images\PowerOff.png"), UriKind.Relative));
+            PowerImage.Source = new BitmapImage(new Uri(_radio.IsOn ? @"\Images\PowerOff.png" : @"\Images\PowerOff.png", UriKind.Relative));
         }
     }
 }

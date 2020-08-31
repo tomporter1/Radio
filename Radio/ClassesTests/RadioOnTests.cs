@@ -9,8 +9,8 @@ namespace ClassesTests
     {
         private IRadio _radio;
 
-        private static List<int> _validVolumes = Enumerable.Range(0, 11).ToList();
-        private static List<int> _validChannels = Enumerable.Range(0, 4).ToList();
+        private static readonly List<int> _validVolumes = Enumerable.Range(0, 11).ToList();
+        private static readonly List<int> _validChannels = Enumerable.Range(0, 4).ToList();
 
         [SetUp]
         public void Setup()
@@ -23,7 +23,7 @@ namespace ClassesTests
         public void ChangeToValidChannelTest(int newChannel)
         {
             _radio.Channel = newChannel;
-            Assert.That(_radio.Channel,Is.EqualTo(newChannel));
+            Assert.That(_radio.Channel, Is.EqualTo(newChannel));
         }
 
         [TestCase(-1)]
