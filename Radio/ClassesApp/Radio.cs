@@ -40,6 +40,11 @@ namespace RadioClasses
             set => _on = value;
         }
 
+        public List<IStreamable> AllStations
+        {
+            get => _stationsData.AllStationsInfo.RadioStations.ToList<IStreamable>();
+        }
+
         ///////////////////////Methods///////////////////////
 
         public Radio()
@@ -65,16 +70,6 @@ namespace RadioClasses
 
         public void ToggelPower() => _on = !_on;
 
-        public void ToggleMute() => _isMuted = !_isMuted;
-
-        public List<IStreamable> GetAllStations()
-        {
-            List<IStreamable> output = new List<IStreamable>();
-            foreach (IStreamable station in _stationsData.AllStationsInfo.RadioStations)
-            {
-                output.Add(station);
-            }
-            return output;
-        }
+        public void ToggleMute() => _isMuted = !_isMuted;       
     }
 }

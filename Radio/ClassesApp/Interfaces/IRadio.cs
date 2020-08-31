@@ -9,6 +9,7 @@ namespace RadioClasses.Interfaces
         public int Volume { get; set; }
         public bool IsMuted { get; set; }
         public bool IsOn { get; set; }
+        public List<IStreamable> AllStations { get; }
 
         public IStreamable GetStation(int id);
 
@@ -17,8 +18,6 @@ namespace RadioClasses.Interfaces
         public void ToggelPower();
 
         public void ToggleMute();
-
-        public List<IStreamable> GetAllStations();
 
         public static IStreamable MakeStation(string id, string name, string url) => new RadioStation(id, name, url);
 

@@ -23,7 +23,7 @@ namespace RadioGui.Windows
 
         private void PopulateListBox()
         {
-            stationsListBox.ItemsSource = _radio.GetAllStations();
+            stationsListBox.ItemsSource = _radio.AllStations;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
