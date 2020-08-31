@@ -11,33 +11,44 @@ namespace RadioClasses.RadioDataHandling
 
     internal class RadioStation : IEquatable<RadioStation>, IStreamable
     {
-        private string _url;
+        private string _url, _name, _id;
 
         ///////////////////////Properties///////////////////////
-        public string Name { get; set; }
-
-        public Uri URL { get => new Uri(_url); set => _url = value.ToString(); }
-        public string ID { get; set; }
+        public string Name
+        {
+            get => _name;
+            set => _name = value;
+        }
+        public Uri URL
+        {
+            get => new Uri(_url);
+            set => _url = value.ToString();
+        }
+        public string ID
+        {
+            get => _id;
+            set => _id = value;
+        }
 
         public RadioStation(string id, string name, string url)
         {
-            Name = name;
+            _name = name;
             _url = url;
-            ID = id;
+            _id = id;
         }
 
         public RadioStation(string id, string name, Uri url)
         {
-            Name = name;
+            _name = name;
             _url = url.ToString();
-            ID = id;
+            _id = id;
         }
 
         public RadioStation()
         {
-            Name = "";
+            _name = "";
             _url = "about:blank"; //defualt blank url that won't break the Uri class
-            ID = "";
+            _id = "";
         }
 
         public override bool Equals(object obj)
@@ -49,16 +60,16 @@ namespace RadioClasses.RadioDataHandling
         {
             return other != null &&
                    _url == other._url &&
-                   Name == other.Name &&
-                   ID == other.ID;
+                   _name == other._name &&
+                   _id == other._id;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(_url, Name, ID);
+            return HashCode.Combine(_url, _name, _id);
         }
 
-        public override string ToString() => Name;
+        public override string ToString() => _name;
 
         public static bool operator ==(RadioStation left, RadioStation right)
         {
