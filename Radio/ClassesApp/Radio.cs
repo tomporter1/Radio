@@ -59,7 +59,7 @@ namespace RadioClasses
 
         public void UpdateChannelData(object station, string key, string name, string url)
         {
-            _stationsData.UpdateStationEntry(station,key,name,url);
+            _stationsData.UpdateStationEntry(station, key, name, url);
             _stationsData.SerializeData();
         }
 

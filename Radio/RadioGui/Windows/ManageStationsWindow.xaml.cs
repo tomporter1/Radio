@@ -23,12 +23,6 @@ namespace RadioGui.Windows
 
         private void PopulateListBox()
         {
-            //stationsListBox.ItemsSource = null;
-            //List<string> names = new List<string>();
-            //for (int i = 0; i < 4; i++)
-            //{
-            //    names.Add(_radio.GetStation(i).Name);
-            //}
             stationsListBox.ItemsSource = _radio.GetAllStations();
         }
 
@@ -45,8 +39,8 @@ namespace RadioGui.Windows
             _mainWindow.ReloadStations();
             PopulateListBox();
             stationsListBox.SelectedIndex = selectedIndex;
-            
-            _mainWindow.RefreshButtonStationNames();
+
+            _mainWindow.RefreshUI();
 
             MessageBox.Show("Changes Saved", "Radio");
         }

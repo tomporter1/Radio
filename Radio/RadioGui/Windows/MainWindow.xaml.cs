@@ -19,16 +19,20 @@ namespace RadioGui.Windows
         {
             InitializeComponent();
 
-            //UI initialization
             ChangePlayerVolume();
-            UpdateVolLabel();
-            UpdateChanelLabel();
 
-            RefreshButtonStationNames();
+            //UI initialization
+            RefreshUI();
         }
 
-        internal void RefreshButtonStationNames()
+        internal void RefreshUI()
         {
+            volumeLabel.Content = !_radio.IsOn ? "" : _radio.IsMuted ? "Muted" : $"Volume: {_radio.Volume}";
+            channelLabel.Content = _radio.IsOn ? _radio.GetStation(_currentChannelID).Name : "Powered off";
+
+            PowerImage.Source = new BitmapImage(new Uri(_radio.IsOn ? @"\Images\PowerOff.png" : @"\Images\PowerOff.png", UriKind.Relative));
+            MuteImage.Source = new BitmapImage(new Uri(_radio.IsOn && _radio.IsMuted ? @"\Images\UnmuteIcon.png" : @"\Images\MuteIcon.png", UriKind.Relative));
+
             channel1Button.Content = _radio.GetStation(0).Name;
             channel2Button.Content = _radio.GetStation(1).Name;
             channel3Button.Content = _radio.GetStation(2).Name;
@@ -43,16 +47,16 @@ namespace RadioGui.Windows
             if (_radio.IsOn)
             {
                 ChangePlayingStation(_radio.GetStation(_currentChannelID).URL);
-                UpdateChanelLabel();
+                RefreshUI();
             }
         }
 
         private void PowerButton_Click(object sender, RoutedEventArgs e)
         {
             _radio.ToggelPower();
-            UpdateChanelLabel();
-            UpdateVolLabel();
-            ToggelPowerImage();
+
+            RefreshUI();
+
             if (_radio.IsOn)
                 ChangePlayingStation(_radio.GetStation(_currentChannelID).URL);
             else
@@ -64,7 +68,7 @@ namespace RadioGui.Windows
             if (_radio.IsOn)
             {
                 ChangePlayingStation(_radio.GetStation(_currentChannelID).URL);
-                UpdateChanelLabel();
+                RefreshUI();
             }
         }
 
@@ -74,8 +78,7 @@ namespace RadioGui.Windows
             {
                 _radio.ToggleMute();
                 mediaElement.IsMuted = _radio.IsMuted;
-                UpdateMuteButton();
-                UpdateVolLabel();
+                RefreshUI();
             }
         }
 
@@ -84,13 +87,8 @@ namespace RadioGui.Windows
             Button button = (Button)sender;
             int volAdjustment = int.Parse((string)button.DataContext);
             _radio.Volume += volAdjustment;
-            UpdateVolLabel();
+            RefreshUI();
             ChangePlayerVolume();
-        }
-
-        private void ChangePlayerVolume()
-        {
-            mediaElement.Volume = _radio.Volume / 20d;
         }
 
         private void ChangePlayingStation(Uri url)
@@ -106,20 +104,12 @@ namespace RadioGui.Windows
             mediaElement.Source = null;
         }
 
-        private void UpdateVolLabel()
-        {
-            if (!_radio.IsOn)
-                volumeLabel.Content = "";
-            else
-                volumeLabel.Content = _radio.IsMuted ? $"Muted" : $"Volume: {_radio.Volume}";
-        }
-
         public void ShowQuickConnect_Click(object sender, RoutedEventArgs e)
         {
             if (!_radio.IsOn)
             {
                 _radio.ToggelPower();
-                UpdateVolLabel();
+                RefreshUI();
             }
             QuickPlayWindow quickPlayWindow = new QuickPlayWindow(this);
             quickPlayWindow.Show();
@@ -131,29 +121,14 @@ namespace RadioGui.Windows
             manageStationsWindow.Show();
         }
 
-        public void Exit_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
         public void PlayStation(IStreamable station)
         {
             ChangePlayingStation(station.URL);
-            UpdateChanelLabel(station.Name);
+            channelLabel.Content = _radio.IsOn ? station.Name : "Powered off";
         }
 
-        private void UpdateChanelLabel() => channelLabel.Content = _radio.IsOn ? _radio.GetStation(_currentChannelID).Name : "Powered off";
+        public void Exit_Click(object sender, RoutedEventArgs e) => Close();
 
-        private void UpdateChanelLabel(string name) => channelLabel.Content = _radio.IsOn ? name : "Powered off";
-
-        private void UpdateMuteButton()
-        {
-            MuteImage.Source = new BitmapImage(new Uri(_radio.IsOn && _radio.IsMuted ? @"\Images\UnmuteIcon.png" : @"\Images\MuteIcon.png", UriKind.Relative));
-        }
-
-        private void ToggelPowerImage()
-        {
-            PowerImage.Source = new BitmapImage(new Uri(_radio.IsOn ? @"\Images\PowerOff.png" : @"\Images\PowerOff.png", UriKind.Relative));
-        }
+        private void ChangePlayerVolume() => mediaElement.Volume = _radio.Volume / 20d;
     }
 }
