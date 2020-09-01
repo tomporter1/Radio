@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RadioClasses.RadioDataHandling;
+using System;
 
 namespace RadioClasses.Interfaces
 {
@@ -6,5 +7,6 @@ namespace RadioClasses.Interfaces
     {
         string Name { get; set; }
         Uri URL { get; set; }
+        public static IStreamable IStreamableBasicConstructor() => new RadioStation();
     }
 }

@@ -46,7 +46,16 @@ namespace RadioClasses.RadioDataHandling
 
         internal void UpdateStationEntry(object station, string name, string url)
         {
-            int pos = AllStationsInfo.RadioStations.FindIndex(s => s.Name == ((RadioStation)station).Name && s.URL.ToString() == ((RadioStation)station).URL.ToString());
+            int pos = -1;
+            try
+            {
+                pos = AllStationsInfo.RadioStations.FindIndex(s => s.Name == ((RadioStation)station).Name && s.URL.ToString() == ((RadioStation)station).URL.ToString());
+            }
+            catch (InvalidCastException)
+            {
+                throw new Exception("The object passed in could not be converted to an IStreamable");
+            }
+
             if (pos >= 0 && pos < AllStationsInfo.RadioStations.Count)
             {
                 AllStationsInfo.RadioStations[pos] = new RadioStation(name, url);
