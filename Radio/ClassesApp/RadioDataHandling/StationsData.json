@@ -3,22 +3,18 @@
     {
       "Name": "Radio 1",
       "URL": "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p",
-      "ID": "R1"
     },
     {
       "Name": "Radio 2",
       "URL": "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio2_mf_p",
-      "ID": "R2"
     },
     {
       "Name": "Radio Manchester",
       "URL": "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_lrmanc_mf_p?s=1591193950&e=1591208350&h=75b3dec246d371cd71071925f9f4735a",
-      "ID": "RMan"
     },
     {
       "Name": "Radio X",
       "URL": "http://media-ice.musicradio.com/RadioXUKMP3",
-      "ID": "RX"
     }
   ]
 }

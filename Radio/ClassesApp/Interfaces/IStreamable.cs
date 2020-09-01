@@ -6,6 +6,5 @@ namespace RadioClasses.Interfaces
     {
         string Name { get; set; }
         Uri URL { get; set; }
-        string ID { get; set; }
     }
 }

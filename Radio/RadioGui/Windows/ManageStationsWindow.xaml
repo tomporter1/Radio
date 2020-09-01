@@ -5,17 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RadioGui"
         mc:Ignorable="d"
-        Title="Manage Stations" Height="351" Width="811" ResizeMode="NoResize"  Background="#FF181818">
+        Title="Manage Stations" Height="310" Width="811" ResizeMode="NoResize"  Background="#FF181818">
     <Grid>
         <ListBox x:Name="stationsListBox" HorizontalAlignment="Center" Height="94" Margin="0,45,0,0" VerticalAlignment="Top" Width="780" SelectionChanged="StationsListBox_SelectionChanged" Background="#FF535353" Foreground="White" />
         <Label x:Name="label" Content="Saved Radio Stations:" HorizontalAlignment="Center" Height="27" Margin="0,13,0,0" VerticalAlignment="Top" Width="780" Foreground="White"/>
-        <Label x:Name="nameLlabel" Content="Station Name:" HorizontalAlignment="Left" Height="33" Margin="21,184,0,0" VerticalAlignment="Top" Width="96" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="White"/>
-        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="33" Margin="122,184,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="668" VerticalContentAlignment="Center" Background="#FF535353" Foreground="White" SelectionBrush="#FF003B6A"/>
-        <Label x:Name="urlLlabel" Content="Stream URL:" HorizontalAlignment="Left" Height="33" Margin="21,222,0,0" VerticalAlignment="Top" Width="96" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="White"/>
-        <TextBox x:Name="urlTextBox" HorizontalAlignment="Left" Height="33" Margin="122,222,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="668" VerticalContentAlignment="Center" Background="#FF535353" Foreground="White" SelectionBrush="#FF003B6A"/>
-        <Label x:Name="keyLlabel" Content="Station Key:" HorizontalAlignment="Left" Height="33" Margin="21,146,0,0" VerticalAlignment="Top" Width="96" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="White"/>
-        <TextBox x:Name="keyTextBox" HorizontalAlignment="Left" Height="33" Margin="122,146,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="668" VerticalContentAlignment="Center" Background="#FF535353" Foreground="White" SelectionBrush="#FF003B6A"/>
-        <Button x:Name="saveButton" Content="Save Changes" HorizontalAlignment="Center" Height="36" Margin="0,267,0,0" VerticalAlignment="Top" Width="780" Click="SaveButton_Click"  Background="#FF535353" Foreground="White" BorderBrush="#FF474747"/>
+        <Label x:Name="nameLlabel" Content="Station Name:" HorizontalAlignment="Left" Height="33" Margin="21,147,0,0" VerticalAlignment="Top" Width="96" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="White"/>
+        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="33" Margin="122,147,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="668" VerticalContentAlignment="Center" Background="#FF535353" Foreground="White" SelectionBrush="#FF003B6A"/>
+        <Label x:Name="urlLlabel" Content="Stream URL:" HorizontalAlignment="Left" Height="33" Margin="21,185,0,0" VerticalAlignment="Top" Width="96" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="White"/>
+        <TextBox x:Name="urlTextBox" HorizontalAlignment="Left" Height="33" Margin="122,185,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="668" VerticalContentAlignment="Center" Background="#FF535353" Foreground="White" SelectionBrush="#FF003B6A"/>
+        <Button x:Name="saveButton" Content="Save Changes" HorizontalAlignment="Center" Height="36" Margin="0,230,0,0" VerticalAlignment="Top" Width="780" Click="SaveButton_Click"  Background="#FF535353" Foreground="White" BorderBrush="#FF474747"/>
 
     </Grid>
 </Window>

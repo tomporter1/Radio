@@ -11,7 +11,7 @@ namespace RadioClasses.RadioDataHandling
 
     internal class RadioStation : IEquatable<RadioStation>, IStreamable
     {
-        private string _url, _name, _id;
+        private string _url, _name;
 
         ///////////////////////Properties///////////////////////
         public string Name
@@ -24,31 +24,22 @@ namespace RadioClasses.RadioDataHandling
             get => new Uri(_url);
             set => _url = value.ToString();
         }
-        public string ID
-        {
-            get => _id;
-            set => _id = value;
-        }
-
-        public RadioStation(string id, string name, string url)
+        public RadioStation(string name, string url)
         {
             _name = name;
             _url = url;
-            _id = id;
         }
 
-        public RadioStation(string id, string name, Uri url)
+        public RadioStation(string name, Uri url)
         {
             _name = name;
             _url = url.ToString();
-            _id = id;
         }
 
         public RadioStation()
         {
             _name = "";
             _url = "about:blank"; //defualt blank url that won't break the Uri class
-            _id = "";
         }
 
         public override bool Equals(object obj)
@@ -60,13 +51,12 @@ namespace RadioClasses.RadioDataHandling
         {
             return other != null &&
                    _url == other._url &&
-                   _name == other._name &&
-                   _id == other._id;
+                   _name == other._name;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(_url, _name, _id);
+            return HashCode.Combine(_url, _name);
         }
 
         public override string ToString() => _name;

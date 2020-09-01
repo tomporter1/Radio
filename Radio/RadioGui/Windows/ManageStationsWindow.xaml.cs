@@ -30,10 +30,9 @@ namespace RadioGui.Windows
         {
             //get new data from the UI
             int selectedIndex = stationsListBox.SelectedIndex;
-            //IStreamable newStation = IRadio.MakeStation(keyTextBox.Text.Trim(), nameTextBox.Text.Trim(), urlTextBox.Text.Trim());
 
             //Update the information in the radio
-            _radio.UpdateChannelData(stationsListBox.SelectedItem, keyTextBox.Text.Trim(), nameTextBox.Text.Trim(), urlTextBox.Text.Trim());
+            _radio.UpdateChannelData(stationsListBox.SelectedItem, nameTextBox.Text.Trim(), urlTextBox.Text.Trim());
 
             //refresh the ui to have the updata in it
             _mainWindow.ReloadStations();
@@ -52,7 +51,6 @@ namespace RadioGui.Windows
             IStreamable selectedStation = _radio.GetStation(listBox.SelectedIndex);
 
             //puts the data in the text boxes for editing
-            keyTextBox.Text = selectedStation.ID;
             urlTextBox.Text = selectedStation.URL.ToString();
             nameTextBox.Text = selectedStation.Name;
         }

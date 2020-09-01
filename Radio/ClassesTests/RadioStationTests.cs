@@ -33,22 +33,6 @@ namespace ClassesTests
         }
 
         [Test]
-        public void DefaultStationCreation_HasCorrect_Id()
-        {
-            IStreamable result = IRadio.MakeStation();
-
-            Assert.That(result.ID, Is.EqualTo(""));
-        }
-
-        [Test]
-        public void DefaultStationCreation_HasCorrect_Url()
-        {
-            IStreamable result = IRadio.MakeStation();
-
-            Assert.That(result.ID, Is.EqualTo(""));
-        }
-
-        [Test]
         public void StationCreation_HasCorrect_Name()
         {
             IStreamable result = IRadio.MakeStation("stationID", "stationName", "https://stationURL.com/");
@@ -62,14 +46,6 @@ namespace ClassesTests
             IStreamable result = IRadio.MakeStation("stationID", "stationName", "https://stationURL.com/");
 
             Assert.That(result.URL.ToString(), Is.EqualTo("https://stationurl.com/"));
-        }
-
-        [Test]
-        public void StationCreation_HasCorrect_Id()
-        {
-            IStreamable result = IRadio.MakeStation("stationID", "stationName", "https://stationURL.com/");
-
-            Assert.That(result.ID, Is.EqualTo("stationID"));
         }
     }
 }

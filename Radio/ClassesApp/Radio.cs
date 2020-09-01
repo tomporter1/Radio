@@ -57,14 +57,14 @@ namespace RadioClasses
 
         public IStreamable GetStation(int id)
         {
-            if (_stationsData.GetStationWithID(id, out IStreamable radioStation))
+            if (_stationsData.GetStationAtPosition(id, out IStreamable radioStation))
                 return radioStation;
             return new RadioStation();
         }
 
-        public void UpdateChannelData(object station, string key, string name, string url)
+        public void UpdateChannelData(object station, string name, string url)
         {
-            _stationsData.UpdateStationEntry(station, key, name, url);
+            _stationsData.UpdateStationEntry(station, name, url);
             _stationsData.SerializeData();
         }
 
